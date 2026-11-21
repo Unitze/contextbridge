@@ -1,7 +1,7 @@
 ﻿; NSIS installer for ContextBridge. makensis runs natively on Linux, so the installer is
 ; built on Linux together with everything else.
 ;
-;   makensis -DARCH=x64 -DVERSION=0.1.0 -DSTAGE=dist/stage-x64 -DOUTDIR=dist installer/ContextBridge.nsi
+;   makensis -DARCH=x64 -DVERSION=1.0.0 -DSTAGE=dist/stage-x64 -DOUTDIR=dist installer/ContextBridge.nsi
 ;
 ; STAGE must contain: ContextBridge.exe, ContextBridge.Shell.dll, ContextBridge.msix, register.ps1, LICENSE.txt
 
