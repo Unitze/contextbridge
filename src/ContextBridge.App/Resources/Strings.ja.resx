@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Neutral (fallback) language: English. Japanese lives in Strings.ja.resx; keep keys and {n} placeholders in sync (checked by tests). -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Common_OK" xml:space="preserve"><value>OK</value></data>
+  <data name="Common_Cancel" xml:space="preserve"><value>キャンセル</value></data>
+  <data name="Common_Select" xml:space="preserve"><value>選択</value></data>
+  <data name="Common_Browse" xml:space="preserve"><value>参照…</value></data>
+  <data name="Common_SelectAll" xml:space="preserve"><value>すべて選択</value></data>
+  <data name="Common_SelectNone" xml:space="preserve"><value>すべて選択解除</value></data>
+  <data name="Common_Bullet" xml:space="preserve"><value>・</value></data>
+  <data name="Lang_System" xml:space="preserve"><value>Windows の設定に合わせる</value></data>
+  <data name="Main_Reload" xml:space="preserve"><value>再読み込み</value></data>
+  <data name="Main_ReloadTip" xml:space="preserve"><value>保存していない変更を破棄して設定ファイルを読み直します (F5)</value></data>
+  <data name="Main_Save" xml:space="preserve"><value>保存</value></data>
+  <data name="Main_SaveTip" xml:space="preserve"><value>保存 (Ctrl+S)</value></data>
+  <data name="Main_SaveTipRestart" xml:space="preserve"><value>保存してエクスプローラーを再起動 (Ctrl+S)</value></data>
+  <data name="Main_SaveMenuTip" xml:space="preserve"><value>保存のその他のオプション</value></data>
+  <data name="Main_SaveAndRestart" xml:space="preserve"><value>保存してエクスプローラーを再起動</value></data>
+  <data name="Main_RestartOnSave" xml:space="preserve"><value>保存時に常にエクスプローラーを再起動</value></data>
+  <data name="Main_RestartExplorerNow" xml:space="preserve"><value>今すぐエクスプローラーを再起動</value></data>
+  <data name="Main_Add" xml:space="preserve"><value>追加</value></data>
+  <data name="Main_AddTip" xml:space="preserve"><value>プログラムを選んでコマンドを追加 (Ctrl+N)</value></data>
+  <data name="Main_Duplicate" xml:space="preserve"><value>複製</value></data>
+  <data name="Main_DuplicateTip" xml:space="preserve"><value>選択中のコマンドを複製 (Ctrl+D)</value></data>
+  <data name="Main_Delete" xml:space="preserve"><value>削除</value></data>
+  <data name="Main_DeleteTip" xml:space="preserve"><value>選択中のコマンドを削除 (Delete)</value></data>
+  <data name="Main_MoveUpTip" xml:space="preserve"><value>上へ移動</value></data>
+  <data name="Main_MoveDownTip" xml:space="preserve"><value>下へ移動</value></data>
+  <data name="Main_Legacy" xml:space="preserve"><value>旧メニューから引き継ぎ…</value></data>
+  <data name="Main_LegacyTip" xml:space="preserve"><value>レジストリに登録された従来のメニュー項目を取り込みます</value></data>
+  <data name="Main_Import" xml:space="preserve"><value>読み込み…</value></data>
+  <data name="Main_ImportTip" xml:space="preserve"><value>共有ファイル（プリセット）からコマンドを取り込みます</value></data>
+  <data name="Main_Export" xml:space="preserve"><value>書き出し…</value></data>
+  <data name="Main_ExportTip" xml:space="preserve"><value>コマンドを共有ファイルに書き出します</value></data>
+  <data name="Main_Issues" xml:space="preserve"><value>確認事項</value></data>
+  <data name="Main_IssuesTip" xml:space="preserve"><value>クリックで該当するコマンドを表示</value></data>
+  <data name="Tab_Commands" xml:space="preserve"><value>コマンド</value></data>
+  <data name="Tab_Groups" xml:space="preserve"><value>グループ</value></data>
+  <data name="Tab_Settings" xml:space="preserve"><value>設定</value></data>
+  <data name="Cmd_ListHint" xml:space="preserve"><value>上から順にメニューに並びます。ドラッグか Alt+↑↓ で並び替えできます。グループは所属コマンドのうち最初の位置に表示されます。</value></data>
+  <data name="Cmd_SearchTip" xml:space="preserve"><value>表示名・プログラム・グループで絞り込み (Ctrl+F)</value></data>
+  <data name="Cmd_SearchPlaceholder" xml:space="preserve"><value>絞り込み (Ctrl+F)</value></data>
+  <data name="Cmd_ClearSearch" xml:space="preserve"><value>絞り込みを解除</value></data>
+  <data name="Cmd_TryRun" xml:space="preserve"><value>試しに実行…</value></data>
+  <data name="Cmd_TryRunTip" xml:space="preserve"><value>ファイルやフォルダを選んで、エクスプローラーから実行したときと同じ内容で起動します</value></data>
+  <data name="Cmd_ExportThis" xml:space="preserve"><value>このコマンドを書き出す…</value></data>
+  <data name="Cmd_EnabledTip" xml:space="preserve"><value>有効 / 無効</value></data>
+  <data name="Cmd_NoMatches" xml:space="preserve"><value>絞り込みに一致するコマンドはありません。</value></data>
+  <data name="Cmd_EmptyTitle" xml:space="preserve"><value>まだコマンドがありません</value></data>
+  <data name="Cmd_EmptyHint" xml:space="preserve"><value>次のいずれかから始められます。プログラム (.exe) や共有ファイル (.json) をこのウィンドウにドロップしても追加できます。</value></data>
+  <data name="Cmd_EmptyAdd" xml:space="preserve"><value>プログラムを選んで追加</value></data>
+  <data name="Cmd_EmptyLegacy" xml:space="preserve"><value>旧メニューから引き継ぐ…</value></data>
+  <data name="Cmd_EmptyImport" xml:space="preserve"><value>共有ファイル・プリセットを読み込む…</value></data>
+  <data name="Cmd_SelectPrompt" xml:space="preserve"><value>左の一覧からコマンドを選択してください</value></data>
+  <data name="Cmd_SectionDisplay" xml:space="preserve"><value>表示</value></data>
+  <data name="Cmd_Title" xml:space="preserve"><value>表示名</value></data>
+  <data name="Cmd_TitleHint" xml:space="preserve"><value>空欄にするとプログラム名から自動で付けます。例:</value></data>
+  <data name="Cmd_Group" xml:space="preserve"><value>グループ</value></data>
+  <data name="Cmd_DeleteGroupTip" xml:space="preserve"><value>このグループを削除</value></data>
+  <data name="Cmd_NewGroup" xml:space="preserve"><value>新規…</value></data>
+  <data name="Cmd_NewGroupTip" xml:space="preserve"><value>新しいグループを作ってこのコマンドを入れる</value></data>
+  <data name="Cmd_SectionConditions" xml:space="preserve"><value>表示する条件</value></data>
+  <data name="Target_Files" xml:space="preserve"><value>ファイル</value></data>
+  <data name="Target_Folders" xml:space="preserve"><value>フォルダ</value></data>
+  <data name="Target_Background" xml:space="preserve"><value>フォルダの背景</value></data>
+  <data name="Target_BackgroundShort" xml:space="preserve"><value>背景</value></data>
+  <data name="Target_Drives" xml:space="preserve"><value>ドライブ</value></data>
+  <data name="Cmd_Extensions" xml:space="preserve"><value>拡張子</value></data>
+  <data name="Cmd_ExtensionsTip" xml:space="preserve"><value>例: .txt, .md（空欄ですべてのファイル）</value></data>
+  <data name="Cmd_SelectionCount" xml:space="preserve"><value>選択数</value></data>
+  <data name="Cmd_MinSelection" xml:space="preserve"><value>最小選択数</value></data>
+  <data name="Cmd_MaxSelection" xml:space="preserve"><value>最大選択数</value></data>
+  <data name="Cmd_SelBetween" xml:space="preserve"><value>個 〜</value></data>
+  <data name="Cmd_SelSuffix" xml:space="preserve"><value>個（0 は上限なし）</value></data>
+  <data name="Cmd_ConditionsHint" xml:space="preserve"><value>選択に条件外のものが 1 つでも含まれると表示しません（灰色表示ではなく非表示）。</value></data>
+  <data name="Cmd_SectionProgram" xml:space="preserve"><value>実行するプログラム</value></data>
+  <data name="Cmd_Program" xml:space="preserve"><value>プログラム</value></data>
+  <data name="Cmd_Arguments" xml:space="preserve"><value>引数</value></data>
+  <data name="Cmd_Insert" xml:space="preserve"><value>挿入:</value></data>
+  <data name="Cmd_InsertFirst" xml:space="preserve"><value>先頭のパス</value></data>
+  <data name="Cmd_InsertFirstTip" xml:space="preserve"><value>選択した先頭の項目のパス</value></data>
+  <data name="Cmd_InsertAll" xml:space="preserve"><value>すべてのパス</value></data>
+  <data name="Cmd_InsertAllTip" xml:space="preserve"><value>選択したすべてのパス（それぞれ自動で引用符が付きます）</value></data>
+  <data name="Cmd_InsertDir" xml:space="preserve"><value>対象フォルダ</value></data>
+  <data name="Cmd_InsertDirTip" xml:space="preserve"><value>選択した項目があるフォルダ（背景の場合はそのフォルダ）</value></data>
+  <data name="Cmd_ArgumentsHint" xml:space="preserve"><value>%* は各パスに自動で引用符が付きます。%% は % そのもの。%LOCALAPPDATA% などの環境変数も使えます。</value></data>
+  <data name="Cmd_WorkingDir" xml:space="preserve"><value>作業フォルダ</value></data>
+  <data name="Cmd_WorkingDirTip" xml:space="preserve"><value>空欄なら対象フォルダ (%d)</value></data>
+  <data name="Cmd_Window" xml:space="preserve"><value>ウィンドウ</value></data>
+  <data name="Cmd_LaunchEach" xml:space="preserve"><value>複数選択時はファイルごとに起動する（オフ: 1 回の起動でまとめて渡す）</value></data>
+  <data name="Cmd_RunAsAdmin" xml:space="preserve"><value>管理者として実行する</value></data>
+  <data name="Cmd_SectionPreview" xml:space="preserve"><value>実行内容のプレビュー</value></data>
+  <data name="Cmd_SectionIcon" xml:space="preserve"><value>アイコン</value></data>
+  <data name="Cmd_PickIcon" xml:space="preserve"><value>ファイルを選ぶ…</value></data>
+  <data name="Cmd_IconPathTip" xml:space="preserve"><value>アイコンのパス（プログラムから取得の場合は空欄で可）</value></data>
+  <data name="Cmd_IconIndex" xml:space="preserve"><value>番号</value></data>
+  <data name="Cmd_NewCommand" xml:space="preserve"><value>新しいコマンド</value></data>
+  <data name="Cmd_CopySuffix" xml:space="preserve"><value> (コピー)</value></data>
+  <data name="Window_Normal" xml:space="preserve"><value>通常</value></data>
+  <data name="Window_Minimized" xml:space="preserve"><value>最小化</value></data>
+  <data name="Window_Maximized" xml:space="preserve"><value>最大化</value></data>
+  <data name="Window_Hidden" xml:space="preserve"><value>非表示</value></data>
+  <data name="Icon_FromProgram" xml:space="preserve"><value>プログラムから取得</value></data>
+  <data name="Icon_File" xml:space="preserve"><value>ファイルを指定</value></data>
+  <data name="Icon_None" xml:space="preserve"><value>なし</value></data>
+  <data name="Prog_Checking" xml:space="preserve"><value>確認中…</value></data>
+  <data name="Prog_NotFound" xml:space="preserve"><value>⚠ プログラムが見つかりません</value></data>
+  <data name="Origin_Legacy" xml:space="preserve"><value>旧メニューから引き継ぎ: {0}</value></data>
+  <data name="Origin_Import" xml:space="preserve"><value>読み込み元: {0}</value></data>
+  <data name="Prev_ChooseTypes" xml:space="preserve"><value>対象の種類を選んでください</value></data>
+  <data name="Prev_Example" xml:space="preserve"><value>例: {0}</value></data>
+  <data name="Prev_More" xml:space="preserve"><value>…（ほか {0} 回起動）</value></data>
+  <data name="Prev_WorkingDir" xml:space="preserve"><value>作業フォルダ: {0}</value></data>
+  <data name="Prev_AsAdmin" xml:space="preserve"><value>（管理者として実行）</value></data>
+  <data name="Prev_SampleFiles" xml:space="preserve"><value>ファイル {0} 個を選択</value></data>
+  <data name="Prev_SampleFile" xml:space="preserve"><value>ファイル 1 個を選択</value></data>
+  <data name="Prev_SampleFolder" xml:space="preserve"><value>フォルダを選択</value></data>
+  <data name="Prev_SampleBackground" xml:space="preserve"><value>フォルダの背景</value></data>
+  <data name="Prev_SampleDrive" xml:space="preserve"><value>ドライブを選択</value></data>
+  <data name="Grp_Add" xml:space="preserve"><value>グループを追加</value></data>
+  <data name="Grp_SetIcon" xml:space="preserve"><value>アイコンを設定…</value></data>
+  <data name="Grp_ClearIcon" xml:space="preserve"><value>アイコンを解除</value></data>
+  <data name="Grp_Delete" xml:space="preserve"><value>グループを削除…</value></data>
+  <data name="Grp_DeleteTip" xml:space="preserve"><value>選択中のグループを削除 (Delete)</value></data>
+  <data name="Grp_Hint" xml:space="preserve"><value>メニューは「ContextBridge ＞ グループ ＞ コマンド」の 2 階層までです。コマンドの所属はコマンド タブで選びます。</value></data>
+  <data name="Grp_ColTitle" xml:space="preserve"><value>表示名</value></data>
+  <data name="Grp_ColIcon" xml:space="preserve"><value>アイコン</value></data>
+  <data name="Grp_ColCount" xml:space="preserve"><value>コマンド数</value></data>
+  <data name="Grp_Empty" xml:space="preserve"><value>グループはありません。グループを使うとコマンドをサブメニューにまとめられます。</value></data>
+  <data name="Grp_IconNone" xml:space="preserve"><value>（なし）</value></data>
+  <data name="Grp_IconUnset" xml:space="preserve"><value>（未指定）</value></data>
+  <data name="Grp_NoneChoice" xml:space="preserve"><value>（なし：トップに表示）</value></data>
+  <data name="Grp_NewGroup" xml:space="preserve"><value>新しいグループ</value></data>
+  <data name="Dlg_NewGroupTitle" xml:space="preserve"><value>新しいグループ</value></data>
+  <data name="Dlg_NewGroupLabel" xml:space="preserve"><value>グループの表示名:</value></data>
+  <data name="Dlg_DeleteGroupTitle" xml:space="preserve"><value>グループの削除</value></data>
+  <data name="Msg_DeleteGroup" xml:space="preserve"><value>グループ「{0}」を削除しますか？
+
+所属するコマンドが {1} 個あります。保存するまでは「再読み込み」で元に戻せます。</value></data>
+  <data name="Btn_MoveToTop" xml:space="preserve"><value>グループだけ削除（コマンドはトップへ）</value></data>
+  <data name="Btn_DeleteWithCommands" xml:space="preserve"><value>コマンドもまとめて削除</value></data>
+  <data name="Status_GroupDeleted" xml:space="preserve"><value>グループ「{0}」を削除しました</value></data>
+  <data name="Status_GroupAndCommandsDeleted" xml:space="preserve"><value>グループ「{0}」と {1} 個のコマンドを削除しました</value></data>
+  <data name="Status_GroupDeletedMoved" xml:space="preserve"><value>グループ「{0}」を削除し、{1} 個のコマンドをトップに移動しました</value></data>
+  <data name="Set_Menu" xml:space="preserve"><value>メニュー</value></data>
+  <data name="Set_MenuTitle" xml:space="preserve"><value>メニューの名前</value></data>
+  <data name="Set_MenuTitleHint" xml:space="preserve"><value>Windows 11 の仕様上、コマンドはこの名前のサブメニューにまとめて表示されます（空欄で「ContextBridge」）。</value></data>
+  <data name="Set_Language" xml:space="preserve"><value>表示言語</value></data>
+  <data name="Set_LanguageLabel" xml:space="preserve"><value>表示言語</value></data>
+  <data name="Set_LanguageHint" xml:space="preserve"><value>この設定アプリの言語です。エクスプローラーのメニューで自動で付く表示名は Windows の表示言語に従います。</value></data>
+  <data name="Set_Package" xml:space="preserve"><value>新しいコンテキストメニューへの登録</value></data>
+  <data name="Set_PackageHint" xml:space="preserve"><value>署名なしパッケージのため、登録には管理者権限が必要です。Windows の大型アップデート後などにメニューが消えた場合は再登録してください。</value></data>
+  <data name="Set_Explorer" xml:space="preserve"><value>エクスプローラー</value></data>
+  <data name="Set_RestartOnSave" xml:space="preserve"><value>保存したらエクスプローラーを再起動する</value></data>
+  <data name="Set_ExplorerHint" xml:space="preserve"><value>通常は再起動しなくても次の右クリックから反映されます。メニューが更新されないときや、パッケージを登録・更新した直後に使ってください。開いているエクスプローラーのウィンドウは閉じられます。</value></data>
+  <data name="Set_Diagnostics" xml:space="preserve"><value>診断</value></data>
+  <data name="Set_Logging" xml:space="preserve"><value>動作ログを出力する（logs\shell.log）</value></data>
+  <data name="Set_OpenDataFolder" xml:space="preserve"><value>データ フォルダを開く</value></data>
+  <data name="Set_ConfigFile" xml:space="preserve"><value>設定ファイル</value></data>
+  <data name="Set_About" xml:space="preserve"><value>バージョン情報</value></data>
+  <data name="Set_NoNetwork" xml:space="preserve"><value>ContextBridge はネットワーク通信を行いません（更新確認も含む）。</value></data>
+  <data name="Msg_LanguageRestart" xml:space="preserve"><value>表示言語は ContextBridge の再起動後に切り替わります。今すぐ再起動しますか？</value></data>
+  <data name="Msg_LoadFailed" xml:space="preserve"><value>設定ファイルを読み込めませんでした。
+
+{0}
+
+{1}</value></data>
+  <data name="Btn_RestoreBackup" xml:space="preserve"><value>バックアップから復元</value></data>
+  <data name="Btn_StartEmpty" xml:space="preserve"><value>空の設定で開始</value></data>
+  <data name="Btn_Exit" xml:space="preserve"><value>終了</value></data>
+  <data name="Msg_LoadFailedHint" xml:space="preserve"><value>空の設定で開始しても、保存するまで元のファイルは変更されません。</value></data>
+  <data name="Msg_NoBackup" xml:space="preserve"><value>バックアップ (commands.json.bak) が見つかりませんでした。空の設定で開始します。</value></data>
+  <data name="Msg_BackupBroken" xml:space="preserve"><value>バックアップも読み込めませんでした。空の設定で開始します。</value></data>
+  <data name="Status_RestoredFromBackup" xml:space="preserve"><value>バックアップから復元しました。「保存」で設定ファイルを修復できます。</value></data>
+  <data name="Status_Loaded" xml:space="preserve"><value>読み込みました: {0}</value></data>
+  <data name="Status_New" xml:space="preserve"><value>新しい設定です（保存すると作成されます）</value></data>
+  <data name="Msg_SaveBlocked" xml:space="preserve"><value>エラーがあるため保存できません。
+
+{0}</value></data>
+  <data name="Msg_ExternalChange" xml:space="preserve"><value>設定ファイルが別の場所で変更されています。上書きしますか？</value></data>
+  <data name="Msg_SaveFailed" xml:space="preserve"><value>保存できませんでした。
+
+{0}</value></data>
+  <data name="Status_Saved" xml:space="preserve"><value>保存しました ({0:HH:mm:ss})。エクスプローラーで次に右クリックしたときから反映されます。</value></data>
+  <data name="Status_SavedShort" xml:space="preserve"><value>保存しました ({0:HH:mm:ss})。</value></data>
+  <data name="Msg_DiscardAndReload" xml:space="preserve"><value>保存していない変更を破棄して再読み込みしますか？</value></data>
+  <data name="Msg_SaveChanges" xml:space="preserve"><value>変更を保存しますか？</value></data>
+  <data name="Msg_RestartExplorerConfirm" xml:space="preserve"><value>エクスプローラーを再起動します。開いているエクスプローラーのウィンドウは閉じられ、タスク バーも一時的に消えます。続けますか？</value></data>
+  <data name="Status_RestartingExplorer" xml:space="preserve"><value>エクスプローラーを再起動しています…</value></data>
+  <data name="Status_ExplorerRestarted" xml:space="preserve"><value>エクスプローラーを再起動しました。</value></data>
+  <data name="Status_ExplorerRestartFailed" xml:space="preserve"><value>エクスプローラーを再起動できませんでした。</value></data>
+  <data name="Msg_ExplorerRestartFailed" xml:space="preserve"><value>エクスプローラーを再起動できませんでした。
+
+{0}</value></data>
+  <data name="Err_RmStart" xml:space="preserve"><value>Restart Manager を開始できませんでした (エラー {0})</value></data>
+  <data name="Err_RmRegister" xml:space="preserve"><value>エクスプローラーを登録できませんでした (エラー {0})</value></data>
+  <data name="Err_RmShutdown" xml:space="preserve"><value>エクスプローラーを終了できませんでした (エラー {0})</value></data>
+  <data name="Dlg_AddProgramTitle" xml:space="preserve"><value>メニューに追加するプログラムを選択</value></data>
+  <data name="Filter_Programs" xml:space="preserve"><value>プログラム</value></data>
+  <data name="Filter_AllFiles" xml:space="preserve"><value>すべてのファイル</value></data>
+  <data name="Filter_Icons" xml:space="preserve"><value>アイコン・画像</value></data>
+  <data name="Filter_Share" xml:space="preserve"><value>ContextBridge 共有ファイル</value></data>
+  <data name="Msg_DeleteCommand" xml:space="preserve"><value>「{0}」を削除しますか？</value></data>
+  <data name="Msg_ImageConvertFailed" xml:space="preserve"><value>画像を変換できませんでした。
+
+{0}</value></data>
+  <data name="Err_ImageSize" xml:space="preserve"><value>画像のサイズが不正です</value></data>
+  <data name="Msg_NoProgram" xml:space="preserve"><value>実行するプログラムが指定されていません。</value></data>
+  <data name="Try_File" xml:space="preserve"><value>ファイルを選んで試す</value></data>
+  <data name="Try_Folder" xml:space="preserve"><value>フォルダを選んで試す</value></data>
+  <data name="Try_Background" xml:space="preserve"><value>フォルダの背景として試す</value></data>
+  <data name="Try_Drive" xml:space="preserve"><value>ドライブを選んで試す</value></data>
+  <data name="Dlg_TryRunTitle" xml:space="preserve"><value>試しに実行</value></data>
+  <data name="Dlg_TryRunWhich" xml:space="preserve"><value>どの対象で試しますか？</value></data>
+  <data name="Dlg_TryFile" xml:space="preserve"><value>試しに渡すファイルを選択</value></data>
+  <data name="Dlg_TryBackground" xml:space="preserve"><value>背景として開くフォルダを選択</value></data>
+  <data name="Dlg_TryDrive" xml:space="preserve"><value>試しに渡すドライブを選択</value></data>
+  <data name="Dlg_TryFolder" xml:space="preserve"><value>試しに渡すフォルダを選択</value></data>
+  <data name="Msg_WouldBeHidden" xml:space="preserve"><value>この選択ではメニューに表示されません。
+理由: {0}
+
+それでも実行しますか？</value></data>
+  <data name="Msg_ManyLaunches" xml:space="preserve"><value>{0} 回起動します。よろしいですか？</value></data>
+  <data name="Msg_LaunchFailed" xml:space="preserve"><value>起動できませんでした。
+
+&gt; {0}
+
+{1}</value></data>
+  <data name="Status_TryRunDone" xml:space="preserve"><value>「{0}」を試しに実行しました（{1} 回起動）</value></data>
+  <data name="Status_DropUnsupported" xml:space="preserve"><value>ドロップできるのはプログラム (.exe / .lnk など) または共有ファイル (.json) です。</value></data>
+  <data name="Status_NoChanges" xml:space="preserve"><value>変更はありませんでした。</value></data>
+  <data name="Status_LegacyApplied" xml:space="preserve"><value>旧メニューから {0} 件追加、{1} 件更新、{2} 件削除しました（保存で反映）</value></data>
+  <data name="Msg_NothingToExport" xml:space="preserve"><value>書き出すコマンドがありません。</value></data>
+  <data name="Msg_ExportFailed" xml:space="preserve"><value>書き出せませんでした。
+
+{0}</value></data>
+  <data name="Status_ExportedLocalIcons" xml:space="preserve"><value>{0} 件を書き出しました（注意: ローカル変換アイコンのパスが含まれるため、他 PC ではアイコンが表示されない場合があります）: {1}</value></data>
+  <data name="Status_Exported" xml:space="preserve"><value>{0} 件を書き出しました: {1}</value></data>
+  <data name="Err_FileNotFound" xml:space="preserve"><value>ファイルが見つかりません。</value></data>
+  <data name="Err_FileTooLarge" xml:space="preserve"><value>ファイルが大きすぎます</value></data>
+  <data name="Msg_ImportFailed" xml:space="preserve"><value>読み込めませんでした。
+
+{0}</value></data>
+  <data name="Msg_NoCommandsInFile" xml:space="preserve"><value>ファイルにコマンドが含まれていません。</value></data>
+  <data name="Status_Imported" xml:space="preserve"><value>{0} 件を取り込みました（保存で反映）</value></data>
+  <data name="Msg_OpenFolderFailed" xml:space="preserve"><value>フォルダを開けませんでした。
+
+{0}</value></data>
+  <data name="Pkg_Registered" xml:space="preserve"><value>新しいコンテキストメニューに登録済みです（v{0}）</value></data>
+  <data name="Pkg_ActionReregister" xml:space="preserve"><value>再登録</value></data>
+  <data name="Pkg_Outdated" xml:space="preserve"><value>登録されているパッケージ（v{0}）が古いため更新が必要です</value></data>
+  <data name="Pkg_ActionUpdate" xml:space="preserve"><value>更新する</value></data>
+  <data name="Pkg_NotRegistered" xml:space="preserve"><value>新しいコンテキストメニューに登録されていません。メニューは表示されません</value></data>
+  <data name="Pkg_ActionRegister" xml:space="preserve"><value>登録する</value></data>
+  <data name="Pkg_DevBuild" xml:space="preserve"><value>開発用ビルドのためパッケージが同梱されていません（インストーラーから導入してください）</value></data>
+  <data name="Status_Registering" xml:space="preserve"><value>登録しています…（管理者権限の確認が表示されます）</value></data>
+  <data name="Status_Registered" xml:space="preserve"><value>登録しました。</value></data>
+  <data name="Msg_RestartAfterRegister" xml:space="preserve"><value>登録しました。メニューを確実に表示するため、エクスプローラーを今すぐ再起動しますか？</value></data>
+  <data name="Status_RegisterFailed" xml:space="preserve"><value>登録に失敗しました</value></data>
+  <data name="Msg_RegisterFailed" xml:space="preserve"><value>パッケージを登録できませんでした。
+
+{0}</value></data>
+  <data name="Err_PowerShell" xml:space="preserve"><value>PowerShell を起動できませんでした</value></data>
+  <data name="Err_ExitCode" xml:space="preserve"><value>終了コード {0}</value></data>
+  <data name="Err_UacCancelled" xml:space="preserve"><value>管理者権限の確認がキャンセルされました</value></data>
+  <data name="Msg_Unexpected" xml:space="preserve"><value>予期しないエラーが発生しました。
+
+{0}</value></data>
+  <data name="Legacy_WindowTitle" xml:space="preserve"><value>旧コンテキストメニューからの引き継ぎ</value></data>
+  <data name="Legacy_Intro" xml:space="preserve"><value>レジストリに登録されている従来のメニュー項目（静的な verb）を一覧にしました。取り込む項目を選んでください。COM ハンドラで実装された項目や Shift 押下時のみの項目は引き継げません。</value></data>
+  <data name="Legacy_IntroHint" xml:space="preserve"><value>アプリ自身が新しいメニューに対応済みの項目は重複するため、既定でチェックを外しています。取り込んだ項目は後から個別に無効化できます。</value></data>
+  <data name="Legacy_ShowUnsupported" xml:space="preserve"><value>引き継げない項目も表示</value></data>
+  <data name="Legacy_ShowImported" xml:space="preserve"><value>取り込み済み（変更なし）も表示</value></data>
+  <data name="Legacy_SelectAllTip" xml:space="preserve"><value>表示中の取り込める項目をすべて選択します</value></data>
+  <data name="Legacy_SelectNoneTip" xml:space="preserve"><value>表示中の項目の選択をすべて解除します</value></data>
+  <data name="Legacy_SearchTip" xml:space="preserve"><value>名前・コマンドで絞り込み</value></data>
+  <data name="Legacy_Ok" xml:space="preserve"><value>選択した項目を取り込む</value></data>
+  <data name="Legacy_RemovedHeader" xml:space="preserve"><value>レジストリから消えた引き継ぎ済み項目</value></data>
+  <data name="Legacy_RemoveSuffix" xml:space="preserve"><value>  — 削除する</value></data>
+  <data name="Legacy_ColTitle" xml:space="preserve"><value>表示名</value></data>
+  <data name="Legacy_ColStatus" xml:space="preserve"><value>状態</value></data>
+  <data name="Legacy_ColTargets" xml:space="preserve"><value>対象</value></data>
+  <data name="Legacy_ColCommand" xml:space="preserve"><value>コマンド</value></data>
+  <data name="Legacy_Scanning" xml:space="preserve"><value>スキャンしています…</value></data>
+  <data name="Legacy_ScanFailed" xml:space="preserve"><value>スキャンに失敗しました: {0}</value></data>
+  <data name="Legacy_StatusNew" xml:space="preserve"><value>新規</value></data>
+  <data name="Legacy_StatusNewExcluded" xml:space="preserve"><value>新規（既定で除外）</value></data>
+  <data name="Legacy_StatusImported" xml:space="preserve"><value>取り込み済み</value></data>
+  <data name="Legacy_StatusChanged" xml:space="preserve"><value>変更あり（更新）</value></data>
+  <data name="Legacy_StatusUnsupported" xml:space="preserve"><value>引き継げません</value></data>
+  <data name="Legacy_DetailKeys" xml:space="preserve"><value>キー: {0}</value></data>
+  <data name="Legacy_DetailReason" xml:space="preserve"><value>理由: {0}</value></data>
+  <data name="Legacy_DetailExcluded" xml:space="preserve"><value>除外理由: {0}</value></data>
+  <data name="Legacy_DetailConverted" xml:space="preserve"><value>変換後: {0} {1}（{2}）</value></data>
+  <data name="Mode_Each" xml:space="preserve"><value>ファイルごとに起動</value></data>
+  <data name="Mode_Single" xml:space="preserve"><value>まとめて起動</value></data>
+  <data name="Legacy_Summary" xml:space="preserve"><value>新規 {0} 件 / 変更あり {1} 件 / 選択中 {2} 件</value></data>
+  <data name="Legacy_SummaryWithDelete" xml:space="preserve"><value>新規 {0} 件 / 変更あり {1} 件 / 取り込み {2} 件 / 削除 {3} 件</value></data>
+  <data name="Import_WindowTitle" xml:space="preserve"><value>コマンド定義の取り込み確認</value></data>
+  <data name="Import_Header" xml:space="preserve"><value>「{0}」から {1} 件のコマンドを取り込もうとしています</value></data>
+  <data name="Import_Warning" xml:space="preserve"><value>コマンド定義は「どのプログラムをどんな引数で起動するか」のレシピです。信頼できない提供元のものは取り込まないでください。下の起動内容をすべて確認し、取り込むものにだけチェックを入れてください。プリセット集の定義も有志の投稿であり、安全性は保証されません。</value></data>
+  <data name="Import_Blocking" xml:space="preserve"><value>この PC で見つからないプログラムがあります。そのまま取り込んでもメニューから起動できません。該当項目のチェックを外すか、取り込み後にパスを修正してください。</value></data>
+  <data name="Import_Confirmed" xml:space="preserve"><value>起動内容を確認しました</value></data>
+  <data name="Import_Ok" xml:space="preserve"><value>取り込む</value></data>
+  <data name="Import_Abort" xml:space="preserve"><value>中止</value></data>
+  <data name="Import_Program" xml:space="preserve"><value>プログラム</value></data>
+  <data name="Import_ResolvedPath" xml:space="preserve"><value>実際のパス</value></data>
+  <data name="Import_Arguments" xml:space="preserve"><value>引数</value></data>
+  <data name="Import_WorkingDir" xml:space="preserve"><value>作業フォルダ</value></data>
+  <data name="Import_Icon" xml:space="preserve"><value>アイコン</value></data>
+  <data name="Import_Targets" xml:space="preserve"><value>対象</value></data>
+  <data name="Msg_ImportMissingPrograms" xml:space="preserve"><value>見つからないプログラムを含む項目があります。このまま取り込みますか？</value></data>
+  <data name="Export_WindowTitle" xml:space="preserve"><value>コマンドの書き出し</value></data>
+  <data name="Export_Intro" xml:space="preserve"><value>書き出すコマンドを選んでください。所属するグループも一緒に書き出されます。</value></data>
+  <data name="Export_Description" xml:space="preserve"><value>説明（任意）</value></data>
+  <data name="Export_Generalize" xml:space="preserve"><value>ユーザー固有のフォルダを環境変数に置き換える（例: C:\Users\名前\AppData\Local → %LOCALAPPDATA%）</value></data>
+  <data name="Export_Ok" xml:space="preserve"><value>書き出す…</value></data>
+  <data name="Export_GroupSep" xml:space="preserve"><value> ＞ </value></data>
+  <data name="Msg_ExportChooseOne" xml:space="preserve"><value>コマンドを 1 つ以上選んでください。</value></data>
+</root>

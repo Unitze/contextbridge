@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Neutral (fallback) language: English. Japanese lives in Strings.ja.resx; keep keys and {n} placeholders in sync (checked by tests). -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Val_UnsupportedVersion" xml:space="preserve"><value>未対応のバージョンです: {0}</value></data>
+  <data name="Val_NullGroup" xml:space="preserve"><value>空のグループ定義があります</value></data>
+  <data name="Val_GroupNoId" xml:space="preserve"><value>ID が空のグループがあります</value></data>
+  <data name="Val_DuplicateGroupId" xml:space="preserve"><value>グループ ID が重複しています: {0}</value></data>
+  <data name="Val_NullCommand" xml:space="preserve"><value>空のコマンド定義があります</value></data>
+  <data name="Val_CommandNoId" xml:space="preserve"><value>ID が空のコマンドがあります</value></data>
+  <data name="Val_DuplicateCommandId" xml:space="preserve"><value>コマンド ID が重複しています: {0}</value></data>
+  <data name="Val_NoProgram" xml:space="preserve"><value>「{0}」: プログラムが指定されていません</value></data>
+  <data name="Val_NoItemTypes" xml:space="preserve"><value>「{0}」: 対象の種類が選択されていません</value></data>
+  <data name="Val_UnknownItemType" xml:space="preserve"><value>「{0}」: 不明な対象の種類 {1}</value></data>
+  <data name="Val_NegativeSelection" xml:space="preserve"><value>「{0}」: 選択数は 0 以上にしてください</value></data>
+  <data name="Val_SelectionTooLarge" xml:space="preserve"><value>「{0}」: 選択数は {1} 以下にしてください</value></data>
+  <data name="Val_MaxBelowMin" xml:space="preserve"><value>「{0}」: 最大選択数が最小選択数より小さくなっています</value></data>
+  <data name="Val_UnknownMultiFileMode" xml:space="preserve"><value>「{0}」: 不明な複数ファイルの渡し方 {1}</value></data>
+  <data name="Val_UnknownWindow" xml:space="preserve"><value>「{0}」: 不明なウィンドウ状態 {1}</value></data>
+  <data name="Val_MissingGroup" xml:space="preserve"><value>「{0}」: グループ {1} が存在しないためトップに表示されます</value></data>
+  <data name="Val_BackgroundMin" xml:space="preserve"><value>「{0}」: フォルダ背景は選択数 1 として扱われるため表示されません</value></data>
+  <data name="Val_ProgramNotFound" xml:space="preserve"><value>「{0}」: プログラムが見つかりません ({1})</value></data>
+  <data name="Val_OnlyFirstFile" xml:space="preserve"><value>「{0}」: 引数が %1 のみのため、複数選択時は先頭ファイルしか渡されません（%* か「ファイルごとに起動」を検討してください）</value></data>
+  <data name="Val_TooManyCommands" xml:space="preserve"><value>有効なコマンドが {0} 個あります。{1} 個を超えるとメニューが見づらく、表示も重くなる可能性があります</value></data>
+  <data name="Val_UnknownIconSource" xml:space="preserve"><value>不明なアイコンの種類 {0}</value></data>
+  <data name="Why_BackgroundNotTarget" xml:space="preserve"><value>「フォルダの背景」が対象になっていません</value></data>
+  <data name="Why_NoBackgroundPath" xml:space="preserve"><value>対象フォルダのパスがありません</value></data>
+  <data name="Why_BackgroundMin" xml:space="preserve"><value>フォルダの背景は選択数 1 として扱われます</value></data>
+  <data name="Why_NothingSelected" xml:space="preserve"><value>何も選択されていません</value></data>
+  <data name="Why_TooFew" xml:space="preserve"><value>選択数 {0} 個が最小 {1} 個に足りません</value></data>
+  <data name="Why_TooMany" xml:space="preserve"><value>選択数 {0} 個が最大 {1} 個を超えています</value></data>
+  <data name="Why_NoPath" xml:space="preserve"><value>ファイル システム上のパスを持たない項目が含まれています</value></data>
+  <data name="Why_FileNotTarget" xml:space="preserve"><value>「ファイル」が対象になっていません</value></data>
+  <data name="Why_Extension" xml:space="preserve"><value>{0} は対象の拡張子 ({1}) ではありません</value></data>
+  <data name="Why_FolderNotTarget" xml:space="preserve"><value>「フォルダ」が対象になっていません</value></data>
+  <data name="Why_DriveNotTarget" xml:space="preserve"><value>「ドライブ」が対象になっていません</value></data>
+  <data name="Legacy_Extended" xml:space="preserve"><value>Shift キー押下時のみ表示される項目</value></data>
+  <data name="Legacy_AppliesTo" xml:space="preserve"><value>条件式（AppliesTo）付きの項目</value></data>
+  <data name="Legacy_ExplorerCommandHandler" xml:space="preserve"><value>COM ハンドラ（ExplorerCommandHandler）</value></data>
+  <data name="Legacy_Cascade" xml:space="preserve"><value>サブメニュー（カスケード）</value></data>
+  <data name="Legacy_DelegateExecute" xml:space="preserve"><value>COM ハンドラ（DelegateExecute）</value></data>
+  <data name="Legacy_NoCommand" xml:space="preserve"><value>コマンドが登録されていない</value></data>
+  <data name="Legacy_Unparsable" xml:space="preserve"><value>コマンドを解析できない</value></data>
+  <data name="Excl_Builtin" xml:space="preserve"><value>Windows 標準の項目</value></data>
+  <data name="Excl_AppSupports" xml:space="preserve"><value>アプリ側で新メニューに対応済み</value></data>
+  <data name="Excl_AppMaySupport" xml:space="preserve"><value>アプリ側で新メニューに対応済みの可能性があります</value></data>
+  <data name="Excl_VisualStudio" xml:space="preserve"><value>アプリ側で新メニューに対応済み (Visual Studio)</value></data>
+  <data name="Excl_System" xml:space="preserve"><value>Windows のシステムコンポーネント</value></data>
+  <data name="Excl_ScriptHost" xml:space="preserve"><value>スクリプトホスト経由の項目</value></data>
+  <data name="Imp_WorkingDirDefault" xml:space="preserve"><value>%d（既定）</value></data>
+  <data name="Imp_IconNone" xml:space="preserve"><value>なし</value></data>
+  <data name="Imp_IconUnset" xml:space="preserve"><value>（未指定）</value></data>
+  <data name="Imp_IconFromProgram" xml:space="preserve"><value>プログラムから取得</value></data>
+  <data name="Imp_TargetFiles" xml:space="preserve"><value>ファイル ({0})</value></data>
+  <data name="Imp_TargetAllFiles" xml:space="preserve"><value>すべてのファイル</value></data>
+  <data name="Imp_TargetFolder" xml:space="preserve"><value>フォルダ</value></data>
+  <data name="Imp_TargetBackground" xml:space="preserve"><value>フォルダの背景</value></data>
+  <data name="Imp_TargetDrive" xml:space="preserve"><value>ドライブ</value></data>
+  <data name="Imp_SelAtLeast" xml:space="preserve"><value>{0} 個以上</value></data>
+  <data name="Imp_SelRange" xml:space="preserve"><value>{0}〜{1} 個</value></data>
+  <data name="Imp_ModeEach" xml:space="preserve"><value>ファイルごとに起動</value></data>
+  <data name="Imp_ModeSingle" xml:space="preserve"><value>まとめて起動</value></data>
+  <data name="Imp_TargetSummary" xml:space="preserve"><value>{0}　選択数 {1}　{2}</value></data>
+  <data name="Imp_RootNotObject" xml:space="preserve"><value>JSON のルートがオブジェクトではありません</value></data>
+  <data name="Imp_NotContextBridge" xml:space="preserve"><value>ContextBridge のコマンド定義ファイルではありません</value></data>
+  <data name="Imp_NoVersion" xml:space="preserve"><value>バージョン (version) が指定されていません</value></data>
+  <data name="Imp_EmptyFile" xml:space="preserve"><value>空のファイルです</value></data>
+  <data name="Find_UserSpecificPath" xml:space="preserve"><value>プログラムのパスが他のユーザー名を含んでおり、この PC では見つかりません</value></data>
+  <data name="Find_ProgramNotFound" xml:space="preserve"><value>プログラムがこの PC で見つかりません</value></data>
+  <data name="Find_ScriptHost" xml:space="preserve"><value>{0} はコマンドやスクリプトを実行できるプログラムです。引数の内容を必ず確認してください</value></data>
+  <data name="Find_ScriptProgram" xml:space="preserve"><value>プログラム自体がスクリプトまたは直接実行形式 ({0}) です。内容を必ず確認してください</value></data>
+  <data name="Find_TemplateInProgram" xml:space="preserve"><value>プログラムのパスに %1 / %* / %d が含まれています</value></data>
+  <data name="Find_UncProgram" xml:space="preserve"><value>プログラムにネットワーク パス (UNC) が指定されています（外部サーバーへの接続が発生します）</value></data>
+  <data name="Find_UncWorkingDir" xml:space="preserve"><value>作業フォルダにネットワーク パス (UNC) が指定されています（外部サーバーへの接続が発生します）</value></data>
+  <data name="Find_UncIcon" xml:space="preserve"><value>アイコンにネットワーク パス (UNC) が指定されています（メニュー表示だけで外部サーバーへ接続が発生します）</value></data>
+  <data name="Find_Url" xml:space="preserve"><value>引数に URL が含まれています（ダウンロードを伴う可能性があります）</value></data>
+  <data name="Find_ScriptFile" xml:space="preserve"><value>引数にスクリプトファイルが含まれています</value></data>
+  <data name="Find_RunAsAdmin" xml:space="preserve"><value>管理者として実行されます</value></data>
+  <data name="Find_Hidden" xml:space="preserve"><value>ウィンドウを表示せずに実行されます</value></data>
+</root>

@@ -1,0 +1,66 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>ContextBridge</AssemblyName>
+    <RootNamespace>ContextBridge.App</RootNamespace>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Product>ContextBridge</Product>
+    <Company>ContextBridge contributors</Company>
+    <Description>ContextBridge settings</Description>
+    <!-- WPF0001: Fluent ThemeMode is marked experimental. -->
+    <NoWarn>$(NoWarn);WPF0001</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <SatelliteResourceLanguages>ja;en</SatelliteResourceLanguages>
+    <InvariantGlobalization>false</InvariantGlobalization>
+  </PropertyGroup>
+
+  <!-- UI text: English is the neutral language, Japanese in Strings.ja.resx (public for x:Static in XAML). -->
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <StronglyTypedLanguage>CSharp</StronglyTypedLanguage>
+      <StronglyTypedClassName>Strings</StronglyTypedClassName>
+      <StronglyTypedNamespace>ContextBridge.App.Resources</StronglyTypedNamespace>
+      <StronglyTypedFileName>$(BaseIntermediateOutputPath)generated\Strings.g.cs</StronglyTypedFileName>
+      <PublicClass>true</PublicClass>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- WPF compiles XAML in a temporary project (*_wpftmp) before the regular resource generation;
+       generate the strongly typed Strings class first so code-behind and x:Static can see it. -->
+  <Target Name="CreateGeneratedDir" BeforeTargets="PrepareResourceNames">
+    <MakeDir Directories="$(BaseIntermediateOutputPath)generated" />
+  </Target>
+  <Target Name="GenerateStringsBeforeMarkup" BeforeTargets="MarkupCompilePass1" DependsOnTargets="PrepareResourceNames;ResGen" />
+  <ItemGroup Condition="'$(_TargetAssemblyProjectName)' != ''">
+    <Compile Include="$(BaseIntermediateOutputPath)generated\Strings.g.cs" />
+  </ItemGroup>
+
+  <!-- Release: self-contained so users need no separate .NET runtime install. -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release' and '$(RuntimeIdentifier)' != ''">
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\app.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ContextBridge.Core\ContextBridge.Core.csproj" />
+  </ItemGroup>
+
+</Project>

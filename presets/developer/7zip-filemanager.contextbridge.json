@@ -1,0 +1,16 @@
+{
+  "kind": "contextbridge-share",
+  "version": 1,
+  "description": "Open archives in 7-Zip File Manager (7-Zip in its default install location)",
+  "groups": [],
+  "commands": [
+    {
+      "id": "7zip-open",
+      "title": "Open in 7-Zip",
+      "enabled": true,
+      "target": { "itemTypes": ["file"], "extensions": [".7z", ".zip", ".rar", ".tar", ".gz", ".xz", ".iso"], "minSelection": 1, "maxSelection": 1 },
+      "action": { "program": "%ProgramFiles%\\7-Zip\\7zFM.exe", "arguments": "\"%1\"", "multiFileMode": "single", "runAsAdmin": false, "window": "normal" },
+      "icon": { "source": "program", "index": 0 }
+    }
+  ]
+}

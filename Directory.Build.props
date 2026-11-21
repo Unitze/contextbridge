@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <!-- Single source of truth for the version: the VERSION file at the repository root. -->
+    <Version>$([System.IO.File]::ReadAllText('$(MSBuildThisFileDirectory)VERSION').Trim())</Version>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+</Project>

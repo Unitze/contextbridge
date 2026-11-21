@@ -1,0 +1,26 @@
+{
+  "kind": "contextbridge-share",
+  "version": 1,
+  "description": "Open in Visual Studio Code (user install). Selected files open together in one window; a folder, folder background or drive opens as a folder",
+  "groups": [ { "id": "vscode", "title": "VS Code" } ],
+  "commands": [
+    {
+      "id": "vscode-files",
+      "title": "Open in VS Code",
+      "group": "vscode",
+      "enabled": true,
+      "target": { "itemTypes": ["file"], "minSelection": 1, "maxSelection": 0 },
+      "action": { "program": "%LOCALAPPDATA%\\Programs\\Microsoft VS Code\\Code.exe", "arguments": "%*", "multiFileMode": "single", "runAsAdmin": false, "window": "normal" },
+      "icon": { "source": "program", "index": 0 }
+    },
+    {
+      "id": "vscode-folder",
+      "title": "Open folder in VS Code",
+      "group": "vscode",
+      "enabled": true,
+      "target": { "itemTypes": ["folder", "folderBackground", "drive"], "minSelection": 1, "maxSelection": 1 },
+      "action": { "program": "%LOCALAPPDATA%\\Programs\\Microsoft VS Code\\Code.exe", "arguments": "\"%1\"", "multiFileMode": "single", "runAsAdmin": false, "window": "normal" },
+      "icon": { "source": "program", "index": 0 }
+    }
+  ]
+}

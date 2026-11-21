@@ -1,0 +1,41 @@
+{
+  "_comment": "Shared test vectors: both the native handler (tests/native) and the .NET core (tests/ContextBridge.Core.Tests) must agree on these. Env: LOCALAPPDATA=C:\\Users\\me\\AppData\\Local, ProgramFiles=C:\\Program Files, DATA=D:\\data.",
+  "templates": [
+    { "template": "%1", "paths": ["C:\\a b\\x.txt"], "directory": "C:\\a b", "expected": "C:\\a b\\x.txt" },
+    { "template": "\"%1\"", "paths": ["C:\\a b\\x.txt"], "directory": "C:\\a b", "expected": "\"C:\\a b\\x.txt\"" },
+    { "template": "%*", "paths": ["C:\\a b\\x.txt", "C:\\y.md"], "directory": "C:\\a b", "expected": "\"C:\\a b\\x.txt\" \"C:\\y.md\"" },
+    { "template": "\"%*\"", "paths": ["C:\\a.txt", "C:\\b.txt"], "directory": "C:\\", "expected": "\"C:\\a.txt\" \"C:\\b.txt\"" },
+    { "template": "-d \"%d\"", "paths": ["C:\\w\\a.txt"], "directory": "C:\\w", "expected": "-d \"C:\\w\"" },
+    { "template": "\"%d\"", "paths": ["D:\\"], "directory": "D:\\", "expected": "\"D:\\\\\"" },
+    { "template": "%d", "paths": ["D:\\"], "directory": "D:\\", "expected": "D:\\" },
+    { "template": "100%%", "paths": [], "directory": "C:\\", "expected": "100%" },
+    { "template": "%LOCALAPPDATA%\\x", "paths": [], "directory": "C:\\", "expected": "C:\\Users\\me\\AppData\\Local\\x" },
+    { "template": "%DATA%\\x %d", "paths": [], "directory": "C:\\w", "expected": "D:\\data\\x C:\\w" },
+    { "template": "%NOPE% %", "paths": [], "directory": "C:\\", "expected": "%NOPE% %" },
+    { "template": "\"%1\"", "paths": ["C:\\100%DATA%.txt"], "directory": "C:\\", "expected": "\"C:\\100%DATA%.txt\"" },
+    { "template": "%*", "paths": ["C:\\q\"x"], "directory": "C:\\", "expected": "\"C:\\q\\\"x\"" },
+    { "template": "%*", "paths": ["C:\\a\\\"b"], "directory": "C:\\", "expected": "\"C:\\a\\\\\\\"b\"" },
+    { "template": "%d_unset% %d", "paths": [], "directory": "C:\\w", "expected": "%d_unset% C:\\w" },
+    { "template": "%1", "paths": [], "directory": "C:\\bg", "expected": "C:\\bg" }
+  ],
+  "configs": [
+    { "name": "minimal", "valid": true, "json": "{\"version\":1}" },
+    { "name": "no version", "valid": false, "json": "{\"commands\":[]}" },
+    { "name": "future version", "valid": false, "json": "{\"version\":2}" },
+    { "name": "float version", "valid": false, "json": "{\"version\":1.5}" },
+    { "name": "missing action", "valid": false, "json": "{\"version\":1,\"commands\":[{\"id\":\"a\"}]}" },
+    { "name": "empty program", "valid": false, "json": "{\"version\":1,\"commands\":[{\"id\":\"a\",\"action\":{\"program\":\" \"}}]}" },
+    { "name": "whitespace id", "valid": false, "json": "{\"version\":1,\"commands\":[{\"id\":\" \",\"action\":{\"program\":\"x\"}}]}" },
+    { "name": "empty itemTypes", "valid": false, "json": "{\"version\":1,\"commands\":[{\"id\":\"a\",\"target\":{\"itemTypes\":[]},\"action\":{\"program\":\"x\"}}]}" },
+    { "name": "huge selection", "valid": false, "json": "{\"version\":1,\"commands\":[{\"id\":\"a\",\"target\":{\"minSelection\":1000001},\"action\":{\"program\":\"x\"}}]}" },
+    { "name": "icon index overflow", "valid": false, "json": "{\"version\":1,\"commands\":[{\"id\":\"a\",\"action\":{\"program\":\"x\"},\"icon\":{\"index\":1e20}}]}" },
+    { "name": "duplicate ids", "valid": false, "json": "{\"version\":1,\"commands\":[{\"id\":\"a\",\"action\":{\"program\":\"x\"}},{\"id\":\"a\",\"action\":{\"program\":\"y\"}}]}" },
+    { "name": "bad itemType", "valid": false, "json": "{\"version\":1,\"commands\":[{\"id\":\"a\",\"target\":{\"itemTypes\":[\"x\"]},\"action\":{\"program\":\"x\"}}]}" },
+    { "name": "bad multiFileMode", "valid": false, "json": "{\"version\":1,\"commands\":[{\"id\":\"a\",\"action\":{\"program\":\"x\",\"multiFileMode\":\"batch\"}}]}" },
+    { "name": "min > max", "valid": false, "json": "{\"version\":1,\"commands\":[{\"id\":\"a\",\"target\":{\"minSelection\":3,\"maxSelection\":2},\"action\":{\"program\":\"x\"}}]}" },
+    { "name": "unknown group tolerated", "valid": true, "json": "{\"version\":1,\"commands\":[{\"id\":\"a\",\"group\":\"zz\",\"action\":{\"program\":\"x\"}}]}" },
+    { "name": "unknown extra fields tolerated", "valid": true, "json": "{\"version\":1,\"$schema\":\"x\",\"commands\":[{\"id\":\"a\",\"origin\":{\"type\":\"legacy\"},\"action\":{\"program\":\"x\"}}]}" },
+    { "name": "duplicate group", "valid": false, "json": "{\"version\":1,\"groups\":[{\"id\":\"g\"},{\"id\":\"g\"}]}" },
+    { "name": "trailing comma", "valid": false, "json": "{\"version\":1,}" }
+  ]
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Neutral (fallback) language: English. Japanese lives in Strings.ja.resx; keep keys and {n} placeholders in sync (checked by tests). -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Val_UnsupportedVersion" xml:space="preserve"><value>Unsupported version: {0}</value></data>
+  <data name="Val_NullGroup" xml:space="preserve"><value>There is an empty group definition</value></data>
+  <data name="Val_GroupNoId" xml:space="preserve"><value>A group has an empty ID</value></data>
+  <data name="Val_DuplicateGroupId" xml:space="preserve"><value>Duplicate group ID: {0}</value></data>
+  <data name="Val_NullCommand" xml:space="preserve"><value>There is an empty command definition</value></data>
+  <data name="Val_CommandNoId" xml:space="preserve"><value>A command has an empty ID</value></data>
+  <data name="Val_DuplicateCommandId" xml:space="preserve"><value>Duplicate command ID: {0}</value></data>
+  <data name="Val_NoProgram" xml:space="preserve"><value>“{0}”: no program is specified</value></data>
+  <data name="Val_NoItemTypes" xml:space="preserve"><value>“{0}”: no target type is selected</value></data>
+  <data name="Val_UnknownItemType" xml:space="preserve"><value>“{0}”: unknown target type {1}</value></data>
+  <data name="Val_NegativeSelection" xml:space="preserve"><value>“{0}”: selection counts must be 0 or more</value></data>
+  <data name="Val_SelectionTooLarge" xml:space="preserve"><value>“{0}”: selection counts must be {1} or less</value></data>
+  <data name="Val_MaxBelowMin" xml:space="preserve"><value>“{0}”: the maximum selection count is smaller than the minimum</value></data>
+  <data name="Val_UnknownMultiFileMode" xml:space="preserve"><value>“{0}”: unknown multi-file mode {1}</value></data>
+  <data name="Val_UnknownWindow" xml:space="preserve"><value>“{0}”: unknown window mode {1}</value></data>
+  <data name="Val_MissingGroup" xml:space="preserve"><value>“{0}”: group {1} does not exist, so the command appears at the top level</value></data>
+  <data name="Val_BackgroundMin" xml:space="preserve"><value>“{0}”: a folder background counts as one selected item, so this command is never shown</value></data>
+  <data name="Val_ProgramNotFound" xml:space="preserve"><value>“{0}”: program not found ({1})</value></data>
+  <data name="Val_OnlyFirstFile" xml:space="preserve"><value>“{0}”: the arguments use only %1, so only the first file is passed when several are selected (consider %* or “Launch once per file”)</value></data>
+  <data name="Val_TooManyCommands" xml:space="preserve"><value>{0} commands are enabled. More than {1} makes the menu hard to scan and may slow it down</value></data>
+  <data name="Val_UnknownIconSource" xml:space="preserve"><value>Unknown icon source {0}</value></data>
+  <data name="Why_BackgroundNotTarget" xml:space="preserve"><value>“Folder background” is not a target</value></data>
+  <data name="Why_NoBackgroundPath" xml:space="preserve"><value>The folder has no path</value></data>
+  <data name="Why_BackgroundMin" xml:space="preserve"><value>A folder background counts as one selected item</value></data>
+  <data name="Why_NothingSelected" xml:space="preserve"><value>Nothing is selected</value></data>
+  <data name="Why_TooFew" xml:space="preserve"><value>{0} selected, fewer than the minimum of {1}</value></data>
+  <data name="Why_TooMany" xml:space="preserve"><value>{0} selected, more than the maximum of {1}</value></data>
+  <data name="Why_NoPath" xml:space="preserve"><value>The selection includes items that have no file-system path</value></data>
+  <data name="Why_FileNotTarget" xml:space="preserve"><value>“Files” is not a target</value></data>
+  <data name="Why_Extension" xml:space="preserve"><value>{0} does not have a target extension ({1})</value></data>
+  <data name="Why_FolderNotTarget" xml:space="preserve"><value>“Folders” is not a target</value></data>
+  <data name="Why_DriveNotTarget" xml:space="preserve"><value>“Drives” is not a target</value></data>
+  <data name="Legacy_Extended" xml:space="preserve"><value>Shown only while Shift is held</value></data>
+  <data name="Legacy_AppliesTo" xml:space="preserve"><value>Has a condition (AppliesTo)</value></data>
+  <data name="Legacy_ExplorerCommandHandler" xml:space="preserve"><value>COM handler (ExplorerCommandHandler)</value></data>
+  <data name="Legacy_Cascade" xml:space="preserve"><value>Submenu (cascade)</value></data>
+  <data name="Legacy_DelegateExecute" xml:space="preserve"><value>COM handler (DelegateExecute)</value></data>
+  <data name="Legacy_NoCommand" xml:space="preserve"><value>No command is registered</value></data>
+  <data name="Legacy_Unparsable" xml:space="preserve"><value>The command line cannot be parsed</value></data>
+  <data name="Excl_Builtin" xml:space="preserve"><value>Built into Windows</value></data>
+  <data name="Excl_AppSupports" xml:space="preserve"><value>The app already provides its own entry in the new menu</value></data>
+  <data name="Excl_AppMaySupport" xml:space="preserve"><value>The app may already provide its own entry in the new menu</value></data>
+  <data name="Excl_VisualStudio" xml:space="preserve"><value>The app already provides its own entry in the new menu (Visual Studio)</value></data>
+  <data name="Excl_System" xml:space="preserve"><value>Windows system component</value></data>
+  <data name="Excl_ScriptHost" xml:space="preserve"><value>Runs through a script host</value></data>
+  <data name="Imp_WorkingDirDefault" xml:space="preserve"><value>%d (default)</value></data>
+  <data name="Imp_IconNone" xml:space="preserve"><value>None</value></data>
+  <data name="Imp_IconUnset" xml:space="preserve"><value>(not set)</value></data>
+  <data name="Imp_IconFromProgram" xml:space="preserve"><value>From the program</value></data>
+  <data name="Imp_TargetFiles" xml:space="preserve"><value>Files ({0})</value></data>
+  <data name="Imp_TargetAllFiles" xml:space="preserve"><value>All files</value></data>
+  <data name="Imp_TargetFolder" xml:space="preserve"><value>Folders</value></data>
+  <data name="Imp_TargetBackground" xml:space="preserve"><value>Folder background</value></data>
+  <data name="Imp_TargetDrive" xml:space="preserve"><value>Drives</value></data>
+  <data name="Imp_SelAtLeast" xml:space="preserve"><value>{0} or more</value></data>
+  <data name="Imp_SelRange" xml:space="preserve"><value>{0}–{1}</value></data>
+  <data name="Imp_ModeEach" xml:space="preserve"><value>launched once per file</value></data>
+  <data name="Imp_ModeSingle" xml:space="preserve"><value>launched once for all</value></data>
+  <data name="Imp_TargetSummary" xml:space="preserve"><value>{0}   Selection: {1}   {2}</value></data>
+  <data name="Imp_RootNotObject" xml:space="preserve"><value>The JSON root is not an object</value></data>
+  <data name="Imp_NotContextBridge" xml:space="preserve"><value>This is not a ContextBridge command definition file</value></data>
+  <data name="Imp_NoVersion" xml:space="preserve"><value>No version is specified</value></data>
+  <data name="Imp_EmptyFile" xml:space="preserve"><value>The file is empty</value></data>
+  <data name="Find_UserSpecificPath" xml:space="preserve"><value>The program path contains another user's name and cannot be found on this PC</value></data>
+  <data name="Find_ProgramNotFound" xml:space="preserve"><value>The program cannot be found on this PC</value></data>
+  <data name="Find_ScriptHost" xml:space="preserve"><value>{0} can run arbitrary commands or scripts. Check the arguments carefully</value></data>
+  <data name="Find_ScriptProgram" xml:space="preserve"><value>The program itself is a script or directly executable file ({0}). Check its contents carefully</value></data>
+  <data name="Find_TemplateInProgram" xml:space="preserve"><value>The program path contains %1 / %* / %d</value></data>
+  <data name="Find_UncProgram" xml:space="preserve"><value>The program is on a network (UNC) path; running it connects to an external server</value></data>
+  <data name="Find_UncWorkingDir" xml:space="preserve"><value>The working folder is a network (UNC) path; running it connects to an external server</value></data>
+  <data name="Find_UncIcon" xml:space="preserve"><value>The icon is on a network (UNC) path; just showing the menu connects to an external server</value></data>
+  <data name="Find_Url" xml:space="preserve"><value>The arguments contain a URL (it may download something)</value></data>
+  <data name="Find_ScriptFile" xml:space="preserve"><value>The arguments contain a script file</value></data>
+  <data name="Find_RunAsAdmin" xml:space="preserve"><value>Runs as administrator</value></data>
+  <data name="Find_Hidden" xml:space="preserve"><value>Runs without showing a window</value></data>
+</root>

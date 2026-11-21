@@ -1,0 +1,26 @@
+{
+  "kind": "contextbridge-share",
+  "version": 1,
+  "description": "Open Git Bash / Git GUI from Git for Windows in a folder (default install location)",
+  "groups": [ { "id": "git", "title": "Git" } ],
+  "commands": [
+    {
+      "id": "git-bash-here",
+      "title": "Open Git Bash here",
+      "group": "git",
+      "enabled": true,
+      "target": { "itemTypes": ["folder", "folderBackground", "drive"], "minSelection": 1, "maxSelection": 1 },
+      "action": { "program": "%ProgramFiles%\\Git\\git-bash.exe", "arguments": "\"--cd=%1\"", "multiFileMode": "single", "runAsAdmin": false, "window": "normal" },
+      "icon": { "source": "program", "index": 0 }
+    },
+    {
+      "id": "git-gui-here",
+      "title": "Open Git GUI here",
+      "group": "git",
+      "enabled": true,
+      "target": { "itemTypes": ["folder", "folderBackground"], "minSelection": 1, "maxSelection": 1 },
+      "action": { "program": "%ProgramFiles%\\Git\\cmd\\git-gui.exe", "arguments": "\"--working-dir\" \"%1\"", "multiFileMode": "single", "runAsAdmin": false, "window": "normal" },
+      "icon": { "source": "program", "index": 0 }
+    }
+  ]
+}

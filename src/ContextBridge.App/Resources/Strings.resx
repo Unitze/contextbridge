@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Neutral (fallback) language: English. Japanese lives in Strings.ja.resx; keep keys and {n} placeholders in sync (checked by tests). -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Common_OK" xml:space="preserve"><value>OK</value></data>
+  <data name="Common_Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Common_Select" xml:space="preserve"><value>Select</value></data>
+  <data name="Common_Browse" xml:space="preserve"><value>Browse…</value></data>
+  <data name="Common_SelectAll" xml:space="preserve"><value>Select all</value></data>
+  <data name="Common_SelectNone" xml:space="preserve"><value>Clear selection</value></data>
+  <data name="Common_Bullet" xml:space="preserve"><value>• </value></data>
+  <data name="Lang_System" xml:space="preserve"><value>Use the Windows setting</value></data>
+  <data name="Main_Reload" xml:space="preserve"><value>Reload</value></data>
+  <data name="Main_ReloadTip" xml:space="preserve"><value>Discard unsaved changes and reload the settings file (F5)</value></data>
+  <data name="Main_Save" xml:space="preserve"><value>Save</value></data>
+  <data name="Main_SaveTip" xml:space="preserve"><value>Save (Ctrl+S)</value></data>
+  <data name="Main_SaveTipRestart" xml:space="preserve"><value>Save and restart Explorer (Ctrl+S)</value></data>
+  <data name="Main_SaveMenuTip" xml:space="preserve"><value>More save options</value></data>
+  <data name="Main_SaveAndRestart" xml:space="preserve"><value>Save and restart Explorer</value></data>
+  <data name="Main_RestartOnSave" xml:space="preserve"><value>Always restart Explorer when saving</value></data>
+  <data name="Main_RestartExplorerNow" xml:space="preserve"><value>Restart Explorer now</value></data>
+  <data name="Main_Add" xml:space="preserve"><value>Add</value></data>
+  <data name="Main_AddTip" xml:space="preserve"><value>Choose a program and add a command (Ctrl+N)</value></data>
+  <data name="Main_Duplicate" xml:space="preserve"><value>Duplicate</value></data>
+  <data name="Main_DuplicateTip" xml:space="preserve"><value>Duplicate the selected command (Ctrl+D)</value></data>
+  <data name="Main_Delete" xml:space="preserve"><value>Delete</value></data>
+  <data name="Main_DeleteTip" xml:space="preserve"><value>Delete the selected command (Delete)</value></data>
+  <data name="Main_MoveUpTip" xml:space="preserve"><value>Move up</value></data>
+  <data name="Main_MoveDownTip" xml:space="preserve"><value>Move down</value></data>
+  <data name="Main_Legacy" xml:space="preserve"><value>Migrate legacy menu…</value></data>
+  <data name="Main_LegacyTip" xml:space="preserve"><value>Import the classic menu items registered in the registry</value></data>
+  <data name="Main_Import" xml:space="preserve"><value>Import…</value></data>
+  <data name="Main_ImportTip" xml:space="preserve"><value>Import commands from a share file or preset</value></data>
+  <data name="Main_Export" xml:space="preserve"><value>Export…</value></data>
+  <data name="Main_ExportTip" xml:space="preserve"><value>Export commands to a share file</value></data>
+  <data name="Main_Issues" xml:space="preserve"><value>Issues</value></data>
+  <data name="Main_IssuesTip" xml:space="preserve"><value>Click to show the command</value></data>
+  <data name="Tab_Commands" xml:space="preserve"><value>Commands</value></data>
+  <data name="Tab_Groups" xml:space="preserve"><value>Groups</value></data>
+  <data name="Tab_Settings" xml:space="preserve"><value>Settings</value></data>
+  <data name="Cmd_ListHint" xml:space="preserve"><value>Commands appear in the menu in this order. Drag or press Alt+↑↓ to reorder. A group appears at the position of its first command.</value></data>
+  <data name="Cmd_SearchTip" xml:space="preserve"><value>Filter by title, program, or group (Ctrl+F)</value></data>
+  <data name="Cmd_SearchPlaceholder" xml:space="preserve"><value>Filter (Ctrl+F)</value></data>
+  <data name="Cmd_ClearSearch" xml:space="preserve"><value>Clear filter</value></data>
+  <data name="Cmd_TryRun" xml:space="preserve"><value>Try it…</value></data>
+  <data name="Cmd_TryRunTip" xml:space="preserve"><value>Choose files or folders and launch exactly as Explorer would</value></data>
+  <data name="Cmd_ExportThis" xml:space="preserve"><value>Export this command…</value></data>
+  <data name="Cmd_EnabledTip" xml:space="preserve"><value>Enabled / disabled</value></data>
+  <data name="Cmd_NoMatches" xml:space="preserve"><value>No commands match the filter.</value></data>
+  <data name="Cmd_EmptyTitle" xml:space="preserve"><value>No commands yet</value></data>
+  <data name="Cmd_EmptyHint" xml:space="preserve"><value>Start with one of the options below. You can also drop a program (.exe) or a share file (.json) onto this window.</value></data>
+  <data name="Cmd_EmptyAdd" xml:space="preserve"><value>Choose a program to add</value></data>
+  <data name="Cmd_EmptyLegacy" xml:space="preserve"><value>Migrate from the legacy menu…</value></data>
+  <data name="Cmd_EmptyImport" xml:space="preserve"><value>Import a share file or preset…</value></data>
+  <data name="Cmd_SelectPrompt" xml:space="preserve"><value>Select a command in the list</value></data>
+  <data name="Cmd_SectionDisplay" xml:space="preserve"><value>Display</value></data>
+  <data name="Cmd_Title" xml:space="preserve"><value>Title</value></data>
+  <data name="Cmd_TitleHint" xml:space="preserve"><value>If left blank, a title is made from the program name, e.g.</value></data>
+  <data name="Cmd_Group" xml:space="preserve"><value>Group</value></data>
+  <data name="Cmd_DeleteGroupTip" xml:space="preserve"><value>Delete this group</value></data>
+  <data name="Cmd_NewGroup" xml:space="preserve"><value>New…</value></data>
+  <data name="Cmd_NewGroupTip" xml:space="preserve"><value>Create a group and put this command in it</value></data>
+  <data name="Cmd_SectionConditions" xml:space="preserve"><value>When to show</value></data>
+  <data name="Target_Files" xml:space="preserve"><value>Files</value></data>
+  <data name="Target_Folders" xml:space="preserve"><value>Folders</value></data>
+  <data name="Target_Background" xml:space="preserve"><value>Folder background</value></data>
+  <data name="Target_BackgroundShort" xml:space="preserve"><value>Background</value></data>
+  <data name="Target_Drives" xml:space="preserve"><value>Drives</value></data>
+  <data name="Cmd_Extensions" xml:space="preserve"><value>Extensions</value></data>
+  <data name="Cmd_ExtensionsTip" xml:space="preserve"><value>e.g. .txt, .md (blank = all files)</value></data>
+  <data name="Cmd_SelectionCount" xml:space="preserve"><value>Selection</value></data>
+  <data name="Cmd_MinSelection" xml:space="preserve"><value>Minimum selection</value></data>
+  <data name="Cmd_MaxSelection" xml:space="preserve"><value>Maximum selection</value></data>
+  <data name="Cmd_SelBetween" xml:space="preserve"><value>to</value></data>
+  <data name="Cmd_SelSuffix" xml:space="preserve"><value>items (0 = no limit)</value></data>
+  <data name="Cmd_ConditionsHint" xml:space="preserve"><value>If the selection contains anything that does not match, the command is hidden (not grayed out).</value></data>
+  <data name="Cmd_SectionProgram" xml:space="preserve"><value>Program to run</value></data>
+  <data name="Cmd_Program" xml:space="preserve"><value>Program</value></data>
+  <data name="Cmd_Arguments" xml:space="preserve"><value>Arguments</value></data>
+  <data name="Cmd_Insert" xml:space="preserve"><value>Insert:</value></data>
+  <data name="Cmd_InsertFirst" xml:space="preserve"><value>first path</value></data>
+  <data name="Cmd_InsertFirstTip" xml:space="preserve"><value>Path of the first selected item</value></data>
+  <data name="Cmd_InsertAll" xml:space="preserve"><value>all paths</value></data>
+  <data name="Cmd_InsertAllTip" xml:space="preserve"><value>Every selected path, each quoted automatically</value></data>
+  <data name="Cmd_InsertDir" xml:space="preserve"><value>target folder</value></data>
+  <data name="Cmd_InsertDirTip" xml:space="preserve"><value>Folder that contains the selection (or the background folder)</value></data>
+  <data name="Cmd_ArgumentsHint" xml:space="preserve"><value>%* quotes each path automatically. %% is a literal %. Environment variables such as %LOCALAPPDATA% also work.</value></data>
+  <data name="Cmd_WorkingDir" xml:space="preserve"><value>Working folder</value></data>
+  <data name="Cmd_WorkingDirTip" xml:space="preserve"><value>Blank = target folder (%d)</value></data>
+  <data name="Cmd_Window" xml:space="preserve"><value>Window</value></data>
+  <data name="Cmd_LaunchEach" xml:space="preserve"><value>With several items selected, launch once per item (off: pass them all in one launch)</value></data>
+  <data name="Cmd_RunAsAdmin" xml:space="preserve"><value>Run as administrator</value></data>
+  <data name="Cmd_SectionPreview" xml:space="preserve"><value>Preview</value></data>
+  <data name="Cmd_SectionIcon" xml:space="preserve"><value>Icon</value></data>
+  <data name="Cmd_PickIcon" xml:space="preserve"><value>Choose file…</value></data>
+  <data name="Cmd_IconPathTip" xml:space="preserve"><value>Icon path (can be blank when taken from the program)</value></data>
+  <data name="Cmd_IconIndex" xml:space="preserve"><value>Index</value></data>
+  <data name="Cmd_NewCommand" xml:space="preserve"><value>New command</value></data>
+  <data name="Cmd_CopySuffix" xml:space="preserve"><value> (copy)</value></data>
+  <data name="Window_Normal" xml:space="preserve"><value>Normal</value></data>
+  <data name="Window_Minimized" xml:space="preserve"><value>Minimized</value></data>
+  <data name="Window_Maximized" xml:space="preserve"><value>Maximized</value></data>
+  <data name="Window_Hidden" xml:space="preserve"><value>Hidden</value></data>
+  <data name="Icon_FromProgram" xml:space="preserve"><value>From the program</value></data>
+  <data name="Icon_File" xml:space="preserve"><value>Choose a file</value></data>
+  <data name="Icon_None" xml:space="preserve"><value>None</value></data>
+  <data name="Prog_Checking" xml:space="preserve"><value>Checking…</value></data>
+  <data name="Prog_NotFound" xml:space="preserve"><value>⚠ Program not found</value></data>
+  <data name="Origin_Legacy" xml:space="preserve"><value>Migrated from the legacy menu: {0}</value></data>
+  <data name="Origin_Import" xml:space="preserve"><value>Imported from: {0}</value></data>
+  <data name="Prev_ChooseTypes" xml:space="preserve"><value>Choose at least one target type</value></data>
+  <data name="Prev_Example" xml:space="preserve"><value>Example: {0}</value></data>
+  <data name="Prev_More" xml:space="preserve"><value>… ({0} more launches)</value></data>
+  <data name="Prev_WorkingDir" xml:space="preserve"><value>Working folder: {0}</value></data>
+  <data name="Prev_AsAdmin" xml:space="preserve"><value> (run as administrator)</value></data>
+  <data name="Prev_SampleFiles" xml:space="preserve"><value>{0} files selected</value></data>
+  <data name="Prev_SampleFile" xml:space="preserve"><value>1 file selected</value></data>
+  <data name="Prev_SampleFolder" xml:space="preserve"><value>a folder selected</value></data>
+  <data name="Prev_SampleBackground" xml:space="preserve"><value>folder background</value></data>
+  <data name="Prev_SampleDrive" xml:space="preserve"><value>a drive selected</value></data>
+  <data name="Grp_Add" xml:space="preserve"><value>Add group</value></data>
+  <data name="Grp_SetIcon" xml:space="preserve"><value>Set icon…</value></data>
+  <data name="Grp_ClearIcon" xml:space="preserve"><value>Remove icon</value></data>
+  <data name="Grp_Delete" xml:space="preserve"><value>Delete group…</value></data>
+  <data name="Grp_DeleteTip" xml:space="preserve"><value>Delete the selected group (Delete)</value></data>
+  <data name="Grp_Hint" xml:space="preserve"><value>The menu has at most two levels: “ContextBridge &gt; group &gt; command”. Choose a command's group on the Commands tab.</value></data>
+  <data name="Grp_ColTitle" xml:space="preserve"><value>Title</value></data>
+  <data name="Grp_ColIcon" xml:space="preserve"><value>Icon</value></data>
+  <data name="Grp_ColCount" xml:space="preserve"><value>Commands</value></data>
+  <data name="Grp_Empty" xml:space="preserve"><value>No groups yet. Groups bundle commands into a submenu.</value></data>
+  <data name="Grp_IconNone" xml:space="preserve"><value>(none)</value></data>
+  <data name="Grp_IconUnset" xml:space="preserve"><value>(not set)</value></data>
+  <data name="Grp_NoneChoice" xml:space="preserve"><value>(None: show at the top level)</value></data>
+  <data name="Grp_NewGroup" xml:space="preserve"><value>New group</value></data>
+  <data name="Dlg_NewGroupTitle" xml:space="preserve"><value>New group</value></data>
+  <data name="Dlg_NewGroupLabel" xml:space="preserve"><value>Group name:</value></data>
+  <data name="Dlg_DeleteGroupTitle" xml:space="preserve"><value>Delete group</value></data>
+  <data name="Msg_DeleteGroup" xml:space="preserve"><value>Delete the group “{0}”?
+
+It contains {1} commands. Until you save, Reload undoes this.</value></data>
+  <data name="Btn_MoveToTop" xml:space="preserve"><value>Delete group, keep commands</value></data>
+  <data name="Btn_DeleteWithCommands" xml:space="preserve"><value>Delete group and commands</value></data>
+  <data name="Status_GroupDeleted" xml:space="preserve"><value>Deleted the group “{0}”</value></data>
+  <data name="Status_GroupAndCommandsDeleted" xml:space="preserve"><value>Deleted the group “{0}” and its {1} commands</value></data>
+  <data name="Status_GroupDeletedMoved" xml:space="preserve"><value>Deleted the group “{0}” and moved {1} commands to the top level</value></data>
+  <data name="Set_Menu" xml:space="preserve"><value>Menu</value></data>
+  <data name="Set_MenuTitle" xml:space="preserve"><value>Menu name</value></data>
+  <data name="Set_MenuTitleHint" xml:space="preserve"><value>Windows 11 shows the commands in a submenu with this name (blank = “ContextBridge”).</value></data>
+  <data name="Set_Language" xml:space="preserve"><value>Language</value></data>
+  <data name="Set_LanguageLabel" xml:space="preserve"><value>Display language</value></data>
+  <data name="Set_LanguageHint" xml:space="preserve"><value>Applies to this settings app. Automatic titles in Explorer's menu follow the Windows display language.</value></data>
+  <data name="Set_Package" xml:space="preserve"><value>Registration in the new context menu</value></data>
+  <data name="Set_PackageHint" xml:space="preserve"><value>Registering the unsigned package requires administrator rights. If the menu disappears, for example after a major Windows update, register again.</value></data>
+  <data name="Set_Explorer" xml:space="preserve"><value>Explorer</value></data>
+  <data name="Set_RestartOnSave" xml:space="preserve"><value>Restart Explorer after saving</value></data>
+  <data name="Set_ExplorerHint" xml:space="preserve"><value>Usually not needed: changes apply the next time you right-click. Use it when the menu does not update, or right after registering or updating the package. Open Explorer windows will be closed.</value></data>
+  <data name="Set_Diagnostics" xml:space="preserve"><value>Diagnostics</value></data>
+  <data name="Set_Logging" xml:space="preserve"><value>Write an activity log (logs\shell.log)</value></data>
+  <data name="Set_OpenDataFolder" xml:space="preserve"><value>Open data folder</value></data>
+  <data name="Set_ConfigFile" xml:space="preserve"><value>Settings file</value></data>
+  <data name="Set_About" xml:space="preserve"><value>About</value></data>
+  <data name="Set_NoNetwork" xml:space="preserve"><value>ContextBridge never connects to the network (not even to check for updates).</value></data>
+  <data name="Msg_LanguageRestart" xml:space="preserve"><value>The display language changes when ContextBridge restarts. Restart now?</value></data>
+  <data name="Msg_LoadFailed" xml:space="preserve"><value>The settings file could not be loaded.
+
+{0}
+
+{1}</value></data>
+  <data name="Btn_RestoreBackup" xml:space="preserve"><value>Restore from backup</value></data>
+  <data name="Btn_StartEmpty" xml:space="preserve"><value>Start with empty settings</value></data>
+  <data name="Btn_Exit" xml:space="preserve"><value>Exit</value></data>
+  <data name="Msg_LoadFailedHint" xml:space="preserve"><value>If you start with empty settings, the original file is not changed until you save.</value></data>
+  <data name="Msg_NoBackup" xml:space="preserve"><value>No backup (commands.json.bak) was found. Starting with empty settings.</value></data>
+  <data name="Msg_BackupBroken" xml:space="preserve"><value>The backup could not be loaded either. Starting with empty settings.</value></data>
+  <data name="Status_RestoredFromBackup" xml:space="preserve"><value>Restored from the backup. Save to repair the settings file.</value></data>
+  <data name="Status_Loaded" xml:space="preserve"><value>Loaded: {0}</value></data>
+  <data name="Status_New" xml:space="preserve"><value>New settings (the file is created when you save)</value></data>
+  <data name="Msg_SaveBlocked" xml:space="preserve"><value>The settings cannot be saved because of errors.
+
+{0}</value></data>
+  <data name="Msg_ExternalChange" xml:space="preserve"><value>The settings file was changed elsewhere. Overwrite it?</value></data>
+  <data name="Msg_SaveFailed" xml:space="preserve"><value>Could not save.
+
+{0}</value></data>
+  <data name="Status_Saved" xml:space="preserve"><value>Saved ({0:HH:mm:ss}). Changes apply the next time you right-click in Explorer.</value></data>
+  <data name="Status_SavedShort" xml:space="preserve"><value>Saved ({0:HH:mm:ss}). </value></data>
+  <data name="Msg_DiscardAndReload" xml:space="preserve"><value>Discard unsaved changes and reload?</value></data>
+  <data name="Msg_SaveChanges" xml:space="preserve"><value>Save your changes?</value></data>
+  <data name="Msg_RestartExplorerConfirm" xml:space="preserve"><value>Restart Explorer? Open Explorer windows will be closed and the taskbar disappears briefly.</value></data>
+  <data name="Status_RestartingExplorer" xml:space="preserve"><value>Restarting Explorer…</value></data>
+  <data name="Status_ExplorerRestarted" xml:space="preserve"><value>Explorer restarted.</value></data>
+  <data name="Status_ExplorerRestartFailed" xml:space="preserve"><value>Could not restart Explorer.</value></data>
+  <data name="Msg_ExplorerRestartFailed" xml:space="preserve"><value>Could not restart Explorer.
+
+{0}</value></data>
+  <data name="Err_RmStart" xml:space="preserve"><value>Could not start the Restart Manager (error {0})</value></data>
+  <data name="Err_RmRegister" xml:space="preserve"><value>Could not register Explorer with the Restart Manager (error {0})</value></data>
+  <data name="Err_RmShutdown" xml:space="preserve"><value>Could not shut down Explorer (error {0})</value></data>
+  <data name="Dlg_AddProgramTitle" xml:space="preserve"><value>Choose a program to add to the menu</value></data>
+  <data name="Filter_Programs" xml:space="preserve"><value>Programs</value></data>
+  <data name="Filter_AllFiles" xml:space="preserve"><value>All files</value></data>
+  <data name="Filter_Icons" xml:space="preserve"><value>Icons and images</value></data>
+  <data name="Filter_Share" xml:space="preserve"><value>ContextBridge share files</value></data>
+  <data name="Msg_DeleteCommand" xml:space="preserve"><value>Delete “{0}”?</value></data>
+  <data name="Msg_ImageConvertFailed" xml:space="preserve"><value>Could not convert the image.
+
+{0}</value></data>
+  <data name="Err_ImageSize" xml:space="preserve"><value>The image size is invalid</value></data>
+  <data name="Msg_NoProgram" xml:space="preserve"><value>No program is specified.</value></data>
+  <data name="Try_File" xml:space="preserve"><value>Try with files</value></data>
+  <data name="Try_Folder" xml:space="preserve"><value>Try with folders</value></data>
+  <data name="Try_Background" xml:space="preserve"><value>Try as a folder background</value></data>
+  <data name="Try_Drive" xml:space="preserve"><value>Try with a drive</value></data>
+  <data name="Dlg_TryRunTitle" xml:space="preserve"><value>Try it</value></data>
+  <data name="Dlg_TryRunWhich" xml:space="preserve"><value>Which target do you want to try?</value></data>
+  <data name="Dlg_TryFile" xml:space="preserve"><value>Choose files to pass</value></data>
+  <data name="Dlg_TryBackground" xml:space="preserve"><value>Choose a folder to use as the background</value></data>
+  <data name="Dlg_TryDrive" xml:space="preserve"><value>Choose a drive to pass</value></data>
+  <data name="Dlg_TryFolder" xml:space="preserve"><value>Choose folders to pass</value></data>
+  <data name="Msg_WouldBeHidden" xml:space="preserve"><value>The command would not appear in the menu for this selection.
+Reason: {0}
+
+Run it anyway?</value></data>
+  <data name="Msg_ManyLaunches" xml:space="preserve"><value>This starts the program {0} times. Continue?</value></data>
+  <data name="Msg_LaunchFailed" xml:space="preserve"><value>Could not start the program.
+
+&gt; {0}
+
+{1}</value></data>
+  <data name="Status_TryRunDone" xml:space="preserve"><value>Ran “{0}” as a test ({1} launches)</value></data>
+  <data name="Status_DropUnsupported" xml:space="preserve"><value>You can drop programs (.exe, .lnk, …) or share files (.json).</value></data>
+  <data name="Status_NoChanges" xml:space="preserve"><value>No changes.</value></data>
+  <data name="Status_LegacyApplied" xml:space="preserve"><value>From the legacy menu: {0} added, {1} updated, {2} removed (save to apply)</value></data>
+  <data name="Msg_NothingToExport" xml:space="preserve"><value>There are no commands to export.</value></data>
+  <data name="Msg_ExportFailed" xml:space="preserve"><value>Could not export.
+
+{0}</value></data>
+  <data name="Status_ExportedLocalIcons" xml:space="preserve"><value>Exported {0} commands (note: they refer to locally converted icons, which may not show on other PCs): {1}</value></data>
+  <data name="Status_Exported" xml:space="preserve"><value>Exported {0} commands: {1}</value></data>
+  <data name="Err_FileNotFound" xml:space="preserve"><value>The file was not found.</value></data>
+  <data name="Err_FileTooLarge" xml:space="preserve"><value>The file is too large</value></data>
+  <data name="Msg_ImportFailed" xml:space="preserve"><value>Could not read the file.
+
+{0}</value></data>
+  <data name="Msg_NoCommandsInFile" xml:space="preserve"><value>The file contains no commands.</value></data>
+  <data name="Status_Imported" xml:space="preserve"><value>Imported {0} commands (save to apply)</value></data>
+  <data name="Msg_OpenFolderFailed" xml:space="preserve"><value>Could not open the folder.
+
+{0}</value></data>
+  <data name="Pkg_Registered" xml:space="preserve"><value>Registered in the new context menu (v{0})</value></data>
+  <data name="Pkg_ActionReregister" xml:space="preserve"><value>Register again</value></data>
+  <data name="Pkg_Outdated" xml:space="preserve"><value>The registered package (v{0}) is out of date and needs an update</value></data>
+  <data name="Pkg_ActionUpdate" xml:space="preserve"><value>Update</value></data>
+  <data name="Pkg_NotRegistered" xml:space="preserve"><value>Not registered in the new context menu, so the menu does not appear</value></data>
+  <data name="Pkg_ActionRegister" xml:space="preserve"><value>Register</value></data>
+  <data name="Pkg_DevBuild" xml:space="preserve"><value>This development build does not include the package (install ContextBridge with the installer)</value></data>
+  <data name="Status_Registering" xml:space="preserve"><value>Registering… (an administrator prompt appears)</value></data>
+  <data name="Status_Registered" xml:space="preserve"><value>Registered.</value></data>
+  <data name="Msg_RestartAfterRegister" xml:space="preserve"><value>Registered. Restart Explorer now so that the menu appears?</value></data>
+  <data name="Status_RegisterFailed" xml:space="preserve"><value>Registration failed</value></data>
+  <data name="Msg_RegisterFailed" xml:space="preserve"><value>Could not register the package.
+
+{0}</value></data>
+  <data name="Err_PowerShell" xml:space="preserve"><value>Could not start PowerShell</value></data>
+  <data name="Err_ExitCode" xml:space="preserve"><value>Exit code {0}</value></data>
+  <data name="Err_UacCancelled" xml:space="preserve"><value>The administrator prompt was cancelled</value></data>
+  <data name="Msg_Unexpected" xml:space="preserve"><value>An unexpected error occurred.
+
+{0}</value></data>
+  <data name="Legacy_WindowTitle" xml:space="preserve"><value>Migrate from the legacy context menu</value></data>
+  <data name="Legacy_Intro" xml:space="preserve"><value>These are the classic menu items (static verbs) registered in the registry. Choose the items to import. Items implemented by COM handlers and items shown only with Shift cannot be migrated.</value></data>
+  <data name="Legacy_IntroHint" xml:space="preserve"><value>Items whose app already supports the new menu would be duplicates, so they start unchecked. You can disable imported items individually later.</value></data>
+  <data name="Legacy_ShowUnsupported" xml:space="preserve"><value>Show items that cannot be migrated</value></data>
+  <data name="Legacy_ShowImported" xml:space="preserve"><value>Show already imported (unchanged) items</value></data>
+  <data name="Legacy_SelectAllTip" xml:space="preserve"><value>Select every visible item that can be imported</value></data>
+  <data name="Legacy_SelectNoneTip" xml:space="preserve"><value>Clear the selection of every visible item</value></data>
+  <data name="Legacy_SearchTip" xml:space="preserve"><value>Filter by name or command</value></data>
+  <data name="Legacy_Ok" xml:space="preserve"><value>Import selected items</value></data>
+  <data name="Legacy_RemovedHeader" xml:space="preserve"><value>Migrated items that are gone from the registry</value></data>
+  <data name="Legacy_RemoveSuffix" xml:space="preserve"><value>  — delete</value></data>
+  <data name="Legacy_ColTitle" xml:space="preserve"><value>Title</value></data>
+  <data name="Legacy_ColStatus" xml:space="preserve"><value>Status</value></data>
+  <data name="Legacy_ColTargets" xml:space="preserve"><value>Targets</value></data>
+  <data name="Legacy_ColCommand" xml:space="preserve"><value>Command</value></data>
+  <data name="Legacy_Scanning" xml:space="preserve"><value>Scanning…</value></data>
+  <data name="Legacy_ScanFailed" xml:space="preserve"><value>Scan failed: {0}</value></data>
+  <data name="Legacy_StatusNew" xml:space="preserve"><value>New</value></data>
+  <data name="Legacy_StatusNewExcluded" xml:space="preserve"><value>New (excluded by default)</value></data>
+  <data name="Legacy_StatusImported" xml:space="preserve"><value>Already imported</value></data>
+  <data name="Legacy_StatusChanged" xml:space="preserve"><value>Changed (update)</value></data>
+  <data name="Legacy_StatusUnsupported" xml:space="preserve"><value>Cannot be migrated</value></data>
+  <data name="Legacy_DetailKeys" xml:space="preserve"><value>Keys: {0}</value></data>
+  <data name="Legacy_DetailReason" xml:space="preserve"><value>Reason: {0}</value></data>
+  <data name="Legacy_DetailExcluded" xml:space="preserve"><value>Excluded because: {0}</value></data>
+  <data name="Legacy_DetailConverted" xml:space="preserve"><value>Converted: {0} {1} ({2})</value></data>
+  <data name="Mode_Each" xml:space="preserve"><value>launched once per file</value></data>
+  <data name="Mode_Single" xml:space="preserve"><value>launched once for all</value></data>
+  <data name="Legacy_Summary" xml:space="preserve"><value>New {0} / Changed {1} / Selected {2}</value></data>
+  <data name="Legacy_SummaryWithDelete" xml:space="preserve"><value>New {0} / Changed {1} / Import {2} / Delete {3}</value></data>
+  <data name="Import_WindowTitle" xml:space="preserve"><value>Review commands before importing</value></data>
+  <data name="Import_Header" xml:space="preserve"><value>Importing {1} commands from “{0}”</value></data>
+  <data name="Import_Warning" xml:space="preserve"><value>A command definition is a recipe for which program to launch with which arguments. Do not import definitions from sources you do not trust. Review every launch below and check only the ones to import. Presets are community contributions and are not guaranteed to be safe.</value></data>
+  <data name="Import_Blocking" xml:space="preserve"><value>Some programs cannot be found on this PC. Imported as is, they cannot be launched from the menu. Uncheck those items or fix their paths after importing.</value></data>
+  <data name="Import_Confirmed" xml:space="preserve"><value>I have reviewed what will be launched</value></data>
+  <data name="Import_Ok" xml:space="preserve"><value>Import</value></data>
+  <data name="Import_Abort" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Import_Program" xml:space="preserve"><value>Program</value></data>
+  <data name="Import_ResolvedPath" xml:space="preserve"><value>Actual path</value></data>
+  <data name="Import_Arguments" xml:space="preserve"><value>Arguments</value></data>
+  <data name="Import_WorkingDir" xml:space="preserve"><value>Working folder</value></data>
+  <data name="Import_Icon" xml:space="preserve"><value>Icon</value></data>
+  <data name="Import_Targets" xml:space="preserve"><value>Targets</value></data>
+  <data name="Msg_ImportMissingPrograms" xml:space="preserve"><value>Some selected items use programs that cannot be found. Import anyway?</value></data>
+  <data name="Export_WindowTitle" xml:space="preserve"><value>Export commands</value></data>
+  <data name="Export_Intro" xml:space="preserve"><value>Choose the commands to export. Their groups are exported too.</value></data>
+  <data name="Export_Description" xml:space="preserve"><value>Description (optional)</value></data>
+  <data name="Export_Generalize" xml:space="preserve"><value>Replace user-specific folders with environment variables (e.g. C:\Users\name\AppData\Local → %LOCALAPPDATA%)</value></data>
+  <data name="Export_Ok" xml:space="preserve"><value>Export…</value></data>
+  <data name="Export_GroupSep" xml:space="preserve"><value> &gt; </value></data>
+  <data name="Msg_ExportChooseOne" xml:space="preserve"><value>Choose at least one command.</value></data>
+</root>

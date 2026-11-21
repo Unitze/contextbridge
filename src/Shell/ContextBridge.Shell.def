@@ -1,0 +1,4 @@
+LIBRARY "ContextBridge.Shell.dll"
+EXPORTS
+    DllGetClassObject PRIVATE
+    DllCanUnloadNow PRIVATE

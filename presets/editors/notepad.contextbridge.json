@@ -1,0 +1,16 @@
+{
+  "kind": "contextbridge-share",
+  "version": 1,
+  "description": "Open in Notepad (the Notepad built into Windows; one window per selected file)",
+  "groups": [],
+  "commands": [
+    {
+      "id": "notepad",
+      "title": "Open in Notepad",
+      "enabled": true,
+      "target": { "itemTypes": ["file"], "minSelection": 1, "maxSelection": 15 },
+      "action": { "program": "notepad.exe", "arguments": "\"%1\"", "multiFileMode": "each", "runAsAdmin": false, "window": "normal" },
+      "icon": { "source": "program", "index": 0 }
+    }
+  ]
+}

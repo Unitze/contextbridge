@@ -1,0 +1,135 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# All jobs run on GitHub-hosted runners.
+#   build    (Linux)   tests + every release artifact. The Windows cross toolchain (llvm-mingw) and
+#                      NSIS are fetched by scripts/bootstrap-tools.sh (pinned versions, checksum-verified)
+#                      and cached between runs.
+#   windows  (Windows) checks the shipped x64 handler DLL through COM, builds the native code with MSVC,
+#                      and tries registering the sparse package.
+#   release            publishes the artifacts when a v* tag is pushed.
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    env:
+      CB_TOOLS_DIR: ${{ github.workspace }}/.tools
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Cache cross toolchain
+        uses: actions/cache@v4
+        with:
+          path: .tools
+          key: tools-${{ runner.os }}-${{ hashFiles('scripts/bootstrap-tools.sh') }}
+
+      - name: Bootstrap cross toolchain
+        run: ./scripts/bootstrap-tools.sh --github
+
+      - name: Native core tests (ASan/UBSan)
+        run: |
+          cmake -S . -B build/asan -G Ninja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-fsanitize=address,undefined"
+          cmake --build build/asan --target cb_core_tests
+          ctest --test-dir build/asan --output-on-failure
+
+      - name: .NET tests
+        run: dotnet test tests/ContextBridge.Core.Tests -c Release
+
+      - name: Build release artifacts (DLL, app, MSIX, installer, zip)
+        run: ./scripts/build.sh --skip-tests x64 arm64
+
+      - name: Check artifacts
+        run: |
+          set -e
+          ver=$(tr -d '[:space:]' < VERSION)
+          for a in x64 arm64; do
+            for f in "dist/ContextBridge-$ver-$a-setup.exe" "dist/ContextBridge-$ver-$a-portable.zip" \
+                     "dist/stage-$a/ContextBridge.Shell.dll" "dist/stage-$a/ContextBridge.msix"; do
+              test -s "$f" || { echo "missing: $f"; exit 1; }
+            done
+            # The handler must export the COM entry points and only depend on OS-provided DLLs.
+            "$LLVM_MINGW/bin/llvm-objdump" -p "dist/stage-$a/ContextBridge.Shell.dll" > "$RUNNER_TEMP/objdump.txt"
+            grep -q DllGetClassObject "$RUNNER_TEMP/objdump.txt"
+            grep -q DllCanUnloadNow "$RUNNER_TEMP/objdump.txt"
+            if grep "DLL Name" "$RUNNER_TEMP/objdump.txt" | grep -viE 'kernel32|user32|advapi32|shell32|shlwapi|ole32|api-ms-win-crt'; then
+              echo "unexpected DLL dependency in $a handler"; exit 1
+            fi
+          done
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ContextBridge
+          path: |
+            dist/*.exe
+            dist/*.zip
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: stage-x64
+          path: dist/stage-x64
+          retention-days: 3
+          if-no-files-found: error
+
+  windows:
+    needs: [build]
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: stage-x64
+          path: stage-x64
+
+      - name: Native build + tests (MSVC)
+        run: |
+          cmake -S . -B build/msvc -A x64
+          cmake --build build/msvc --config Release
+          ctest --test-dir build/msvc -C Release --output-on-failure
+
+      - name: COM smoke test (shipped DLL)
+        run: build/msvc/Release/cb_shell_smoke.exe "$PWD\stage-x64\ContextBridge.Shell.dll"
+
+      - name: Sparse package registration
+        # Informational: depends on the runner image allowing unsigned sparse packages.
+        continue-on-error: true
+        run: |
+          ./stage-x64/register.ps1 -Action Register -InstallDir "$PWD\stage-x64" -Language en
+          Get-AppxPackage -Name ContextBridge | Format-List Name, Version, PackageFamilyName, InstallLocation
+          ./stage-x64/register.ps1 -Action Unregister -InstallDir "$PWD\stage-x64" -Language en
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [build, windows]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: ContextBridge
+          path: dist
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          (cd dist && sha256sum * > SHA256SUMS.txt)
+          gh release create "$GITHUB_REF_NAME" dist/* --repo "$GITHUB_REPOSITORY" --title "$GITHUB_REF_NAME" --generate-notes
