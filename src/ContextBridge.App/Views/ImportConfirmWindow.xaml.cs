@@ -46,7 +46,7 @@ partial class ImportConfirmWindow : Window
     void Ok_Click(object sender, RoutedEventArgs e)
     {
         if (_plan.HasUnresolvedPrograms &&
-            MessageBox.Show(Strings.Msg_ImportMissingPrograms, "ContextBridge",
+            AppDialog.Show(Strings.Msg_ImportMissingPrograms, "ContextBridge",
                             MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
             return;
         DialogResult = true;

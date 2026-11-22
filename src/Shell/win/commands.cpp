@@ -1,7 +1,8 @@
 // IExplorerCommand tree:
 //   Root ("ContextBridge", ECF_HASSUBCOMMANDS)
 //     ├─ Command               (leaf)
-//     └─ Group (flyout)        (ECF_HASSUBCOMMANDS)
+//     └─ Group section         (separator + disabled header + commands; Windows 11 does not
+//                               expand nested flyouts)
 //          └─ Command          (leaf)
 // The tree is built from a config snapshot; every node holds a reference to that snapshot so
 // pointers into it stay valid even if the file is reloaded while a menu is open. Selection-
@@ -191,6 +192,15 @@ Selection ReadSelectionCached(RootContext& ctx, IShellItemArray* items) {
         ctx.hasCache = true;
     }
     return sel;
+}
+
+// Selection read by the most recent GetState (Explorer queries the root's state right before
+// enumerating its sub-commands). False when there is none or it is stale.
+bool CachedSelection(RootContext& ctx, Selection& out) {
+    std::lock_guard<std::mutex> guard(ctx.lock);
+    if (!ctx.hasCache || GetTickCount64() - ctx.cachedTick > 5000) return false;
+    out = ctx.cachedSelection;
+    return true;
 }
 
 std::wstring FormatIconResource(const std::wstring& path, int index) {
@@ -403,11 +413,35 @@ private:
     const Command* cmd_;
 };
 
-class GroupCommand final : public CommandBase {
+// Windows 11's new context menu only expands one level of sub-commands: an item with
+// ECF_HASSUBCOMMANDS inside our flyout is drawn as a plain, inert entry. Groups are therefore
+// rendered as sections of the ContextBridge flyout: a separator, a non-clickable header with the
+// group's title and icon, then the group's commands.
+class SeparatorCommand final : public CommandBase {
 public:
-    GroupCommand(std::shared_ptr<RootContext> ctx, std::shared_ptr<const Config> cfg, const Group* group,
-                 std::vector<const Command*> children)
-        : CommandBase(std::move(ctx)), cfg_(std::move(cfg)), group_(group), children_(std::move(children)) {}
+    explicit SeparatorCommand(std::shared_ptr<RootContext> ctx) : CommandBase(std::move(ctx)) {}
+
+    IFACEMETHODIMP GetTitle(IShellItemArray*, LPWSTR* name) override { return DupString(L"", name); }
+    IFACEMETHODIMP GetIcon(IShellItemArray*, LPWSTR* icon) override {
+        if (icon) *icon = nullptr;
+        return E_NOTIMPL;
+    }
+    IFACEMETHODIMP GetState(IShellItemArray*, BOOL, EXPCMDSTATE* state) override {
+        if (!state) return E_POINTER;
+        *state = ECS_ENABLED;
+        return S_OK;
+    }
+    IFACEMETHODIMP GetFlags(EXPCMDFLAGS* flags) override {
+        if (!flags) return E_POINTER;
+        *flags = ECF_ISSEPARATOR;
+        return S_OK;
+    }
+};
+
+class GroupHeaderCommand final : public CommandBase {
+public:
+    GroupHeaderCommand(std::shared_ptr<RootContext> ctx, std::shared_ptr<const Config> cfg, const Group* group)
+        : CommandBase(std::move(ctx)), cfg_(std::move(cfg)), group_(group) {}
 
     IFACEMETHODIMP GetTitle(IShellItemArray*, LPWSTR* name) override {
         if (!name) return E_POINTER;
@@ -439,53 +473,20 @@ public:
             return E_FAIL;
         }
     }
-    IFACEMETHODIMP GetState(IShellItemArray* items, BOOL, EXPCMDSTATE* state) override {
+    IFACEMETHODIMP GetState(IShellItemArray*, BOOL, EXPCMDSTATE* state) override {
         if (!state) return E_POINTER;
-        *state = ECS_HIDDEN;
-        try {
-            Selection sel = ReadSelectionCached(*ctx_, items);
-            for (const Command* c : children_) {
-                if (Matches(*c, sel)) {
-                    *state = ECS_ENABLED;
-                    break;
-                }
-            }
-        } catch (...) {
-        }
+        *state = ECS_DISABLED;  // a label, not an action
         return S_OK;
     }
     IFACEMETHODIMP GetFlags(EXPCMDFLAGS* flags) override {
         if (!flags) return E_POINTER;
-        *flags = ECF_HASSUBCOMMANDS;
+        *flags = ECF_DEFAULT;
         return S_OK;
-    }
-    IFACEMETHODIMP EnumSubCommands(IEnumExplorerCommand** out) override {
-        if (!out) return E_POINTER;
-        *out = nullptr;
-        std::vector<IExplorerCommand*> cmds;
-        try {
-            cmds.reserve(children_.size());
-            for (const Command* c : children_) {
-                auto* leaf = new (std::nothrow) LeafCommand(ctx_, cfg_, c);
-                if (leaf) cmds.push_back(leaf);
-            }
-            auto* e = new (std::nothrow) CommandEnum(std::move(cmds));
-            if (!e) {
-                for (auto* c : cmds) c->Release();
-                return E_OUTOFMEMORY;
-            }
-            *out = e;
-            return S_OK;
-        } catch (...) {
-            for (auto* c : cmds) c->Release();
-            return E_FAIL;
-        }
     }
 
 private:
-    std::shared_ptr<const Config> cfg_;  // keeps group_ and children_ alive
+    std::shared_ptr<const Config> cfg_;  // keeps group_ alive
     const Group* group_;
-    std::vector<const Command*> children_;
 };
 
 class RootCommand final : public CommandBase, public IObjectWithSite {
@@ -568,11 +569,31 @@ public:
         try {
             auto cfg = Snapshot();
             if (cfg) {
-                for (const auto& node : BuildLayout(*cfg)) {
-                    IExplorerCommand* c = nullptr;
-                    if (node.command) c = new (std::nothrow) LeafCommand(ctx_, cfg, node.command);
-                    else c = new (std::nothrow) GroupCommand(ctx_, cfg, node.group, node.children);
+                // Root GetState has just read the selection; lay out only what will be visible so
+                // section separators never double up around a group that would be hidden.
+                Selection sel;
+                std::vector<MenuNode> nodes =
+                    CachedSelection(*ctx_, sel) ? BuildMenu(*cfg, sel) : BuildLayout(*cfg);
+                auto add = [&](IExplorerCommand* c) {
                     if (c) cmds.push_back(c);
+                };
+                bool lastWasSeparator = true;  // no separator at the very top
+                for (size_t i = 0; i < nodes.size(); ++i) {
+                    const MenuNode& node = nodes[i];
+                    if (node.command) {
+                        add(new (std::nothrow) LeafCommand(ctx_, cfg, node.command));
+                        lastWasSeparator = false;
+                        continue;
+                    }
+                    if (!lastWasSeparator) add(new (std::nothrow) SeparatorCommand(ctx_));
+                    add(new (std::nothrow) GroupHeaderCommand(ctx_, cfg, node.group));
+                    for (const Command* child : node.children)
+                        add(new (std::nothrow) LeafCommand(ctx_, cfg, child));
+                    lastWasSeparator = false;
+                    if (i + 1 < nodes.size()) {
+                        add(new (std::nothrow) SeparatorCommand(ctx_));
+                        lastWasSeparator = true;
+                    }
                 }
             }
             auto* e = new (std::nothrow) CommandEnum(std::move(cmds));

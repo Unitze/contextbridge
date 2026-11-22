@@ -7,7 +7,7 @@ An MSIX is an OPC zip with two generated parts:
 Files are stored uncompressed, so each <Block> carries only a hash (no Size attribute).
 
 Usage:
-  python scripts/build_msix.py --arch x64 --version 1.0.0 --out dist/ContextBridge-x64.msix
+  python scripts/build_msix.py --arch x64 --version 1.0.1 --out dist/ContextBridge-x64.msix
 On Windows, scripts/build.ps1 prefers MakeAppx.exe when the SDK is installed and falls back
 to this script otherwise.
 """

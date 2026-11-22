@@ -1,103 +1,81 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using ContextBridge.App.Resources;
 
 namespace ContextBridge.App.Views;
 
-/// <summary>Small code-built dialogs (WPF has no prompt, list picker or task dialog of its own).</summary>
+/// <summary>Prompt, list picker and labeled-choice dialogs, all built on <see cref="AppDialog"/>.</summary>
 static class InputDialog
 {
-    static Window Create(Window? owner, string title, UIElement content) => new()
-    {
-        Title = title,
-        Content = content,
-        Owner = owner,
-        SizeToContent = SizeToContent.WidthAndHeight,
-        ResizeMode = ResizeMode.NoResize,
-        WindowStartupLocation = owner is null ? WindowStartupLocation.CenterScreen : WindowStartupLocation.CenterOwner,
-        ShowInTaskbar = false,
-    };
-
-    static Button MakeButton(string text, bool isDefault = false, bool isCancel = false)
-    {
-        var b = new Button
-        {
-            Content = text,
-            IsDefault = isDefault,
-            IsCancel = isCancel,
-            MinWidth = 88,
-            Padding = new Thickness(16, 5, 16, 5),
-            Margin = new Thickness(8, 0, 0, 0),
-        };
-        if (isDefault && Application.Current?.TryFindResource("AccentButtonStyle") is Style accent) b.Style = accent;
-        return b;
-    }
-
-    static StackPanel ButtonRow(params Button[] buttons)
-    {
-        var row = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
-        foreach (var b in buttons) row.Children.Add(b);
-        return row;
-    }
-
     public static string? Show(Window? owner, string title, string label, string initial)
     {
-        var box = new TextBox { Text = initial, MinWidth = 340, Margin = new Thickness(0, 6, 0, 16) };
-        var ok = MakeButton(Strings.Common_OK, isDefault: true);
-        var panel = new StackPanel { Margin = new Thickness(20) };
-        panel.Children.Add(new Label { Content = label, Target = box, Padding = new Thickness(0) });
-        panel.Children.Add(box);
-        panel.Children.Add(ButtonRow(ok, MakeButton(Strings.Common_Cancel, isCancel: true)));
-
-        var win = Create(owner, title, panel);
-        ok.Click += (_, _) => win.DialogResult = true;
-        win.Loaded += (_, _) => { box.Focus(); box.SelectAll(); };
-        return win.ShowDialog() == true ? box.Text : null;
+        var box = new TextBox { Text = initial, Margin = new Thickness(0, 14, 0, 0), Padding = new Thickness(8, 5, 8, 5) };
+        box.GotKeyboardFocus += (_, _) => box.SelectAll();
+        int r = AppDialog.Run(owner ?? AppDialog.ActiveWindow(), title, MessageBoxImage.None, label, null, box,
+                              new[] { Strings.Common_OK, Strings.Common_Cancel }, defaultIndex: 0, cancelIndex: 1,
+                              canAccept: () => !string.IsNullOrWhiteSpace(box.Text), focus: box);
+        return r == 0 ? box.Text : null;
     }
 
     public static int Choose(Window? owner, string title, string label, IReadOnlyList<string> options)
     {
-        var list = new ListBox { ItemsSource = options, SelectedIndex = 0, MinWidth = 320, Margin = new Thickness(0, 6, 0, 16) };
-        var ok = MakeButton(Strings.Common_Select, isDefault: true);
-        var panel = new StackPanel { Margin = new Thickness(20) };
-        panel.Children.Add(new TextBlock { Text = label });
-        panel.Children.Add(list);
-        panel.Children.Add(ButtonRow(ok, MakeButton(Strings.Common_Cancel, isCancel: true)));
-
-        var win = Create(owner, title, panel);
-        ok.Click += (_, _) => win.DialogResult = true;
-        list.MouseDoubleClick += (_, _) => { if (list.SelectedIndex >= 0) win.DialogResult = true; };
-        win.Loaded += (_, _) => (list.ItemContainerGenerator.ContainerFromIndex(0) as ListBoxItem)?.Focus();
-        return win.ShowDialog() == true ? list.SelectedIndex : -1;
+        // Large, clearly separated choices (radio-style list) instead of a bare ListBox.
+        var list = new ListBox
+        {
+            ItemsSource = options,
+            SelectedIndex = 0,
+            Margin = new Thickness(0, 14, 0, 0),
+            BorderThickness = new Thickness(0),
+        };
+        list.ItemContainerStyle = new Style(typeof(ListBoxItem), Application.Current?.TryFindResource(typeof(ListBoxItem)) as Style)
+        {
+            Setters = { new Setter(Control.PaddingProperty, new Thickness(12, 8, 12, 8)) },
+        };
+        int result = -1;
+        Window? dialogWindow = null;
+        list.MouseDoubleClick += (_, e) =>
+        {
+            if (list.SelectedIndex < 0 || e.OriginalSource is not FrameworkElement { DataContext: string }) return;
+            result = list.SelectedIndex;
+            dialogWindow = Window.GetWindow(list);
+            if (dialogWindow is not null) dialogWindow.DialogResult = true;
+        };
+        list.Loaded += (_, _) => (list.ItemContainerGenerator.ContainerFromIndex(0) as ListBoxItem)?.Focus();
+        list.PreviewKeyDown += (_, e) =>
+        {
+            if (e.Key != Key.Enter || list.SelectedIndex < 0) return;
+            result = list.SelectedIndex;
+            var w = Window.GetWindow(list);
+            if (w is not null) w.DialogResult = true;
+            e.Handled = true;
+        };
+        int r = AppDialog.Run(owner ?? AppDialog.ActiveWindow(), title, MessageBoxImage.None, label, null, list,
+                              new[] { Strings.Common_Select, Strings.Common_Cancel }, defaultIndex: 0, cancelIndex: 1,
+                              canAccept: () => list.SelectedIndex >= 0, focus: list);
+        if (result >= 0) return result;
+        return r == 0 ? list.SelectedIndex : -1;
     }
 
     /// <summary>
-    /// A message with explicitly labeled choices instead of Yes/No (whose meaning would have to be
-    /// explained in the text, and whose captions follow the Windows language, not the app's).
-    /// Returns the index of the chosen button, or -1 when closed / cancelled.
+    /// A question with explicitly labeled choices instead of Yes/No. Returns the index of the chosen
+    /// button, or -1 when cancelled.
     /// </summary>
-    public static int Ask(Window? owner, string title, string message, string? note, IReadOnlyList<string> choices, int defaultIndex = 0)
+    public static int Ask(Window? owner, string title, string message, string? note, IReadOnlyList<string> choices,
+                          int defaultIndex = 0, MessageBoxImage image = MessageBoxImage.Question,
+                          string? cancelLabel = null)
     {
-        var panel = new StackPanel { Margin = new Thickness(20), MaxWidth = 560 };
-        panel.Children.Add(new TextBlock { Text = message, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, note is null ? 20 : 8) });
-        if (note is not null)
-            panel.Children.Add(new TextBlock { Text = note, TextWrapping = TextWrapping.Wrap, Opacity = 0.7, FontSize = 12, Margin = new Thickness(0, 0, 0, 20) });
-
-        int result = -1;
-        Window? win = null;
-        var buttons = new List<Button>();
-        for (int i = 0; i < choices.Count; i++)
+        var buttons = choices.Append(cancelLabel ?? Strings.Common_Cancel).ToList();
+        string heading = message, body = note ?? "";
+        int split = message.Replace("\r\n", "\n").IndexOf("\n\n", StringComparison.Ordinal);
+        if (split >= 0)
         {
-            int index = i;
-            var b = MakeButton(choices[i], isDefault: i == defaultIndex);
-            b.Click += (_, _) => { result = index; win!.DialogResult = true; };
-            buttons.Add(b);
+            var m = message.Replace("\r\n", "\n");
+            heading = m[..split].Trim();
+            body = (m[(split + 2)..].Trim() + (note is null ? "" : "\n\n" + note)).Trim();
         }
-        buttons.Add(MakeButton(Strings.Common_Cancel, isCancel: true));
-        panel.Children.Add(ButtonRow(buttons.ToArray()));
-
-        win = Create(owner, title, panel);
-        win.ShowDialog();
-        return result;
+        int r = AppDialog.Run(owner ?? AppDialog.ActiveWindow(), title, image, heading, body, null, buttons,
+                              defaultIndex, cancelIndex: buttons.Count - 1);
+        return r >= 0 && r < choices.Count ? r : -1;
     }
 }

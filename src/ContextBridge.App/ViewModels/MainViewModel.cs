@@ -108,7 +108,7 @@ sealed partial class MainViewModel : ObservableObject
 
     void PromptRestartForLanguage()
     {
-        if (MessageBox.Show(Strings.Msg_LanguageRestart, "ContextBridge", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+        if (AppDialog.Show(Strings.Msg_LanguageRestart, "ContextBridge", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
             return;
         if (!ConfirmClose()) return;
         _closeConfirmed = true;
@@ -268,14 +268,15 @@ sealed partial class MainViewModel : ObservableObject
             var r = InputDialog.Ask(null, "ContextBridge",
                 string.Format(Strings.Msg_LoadFailed, ex.Message, _store.ConfigPath),
                 Strings.Msg_LoadFailedHint,
-                new[] { Strings.Btn_RestoreBackup, Strings.Btn_StartEmpty, Strings.Btn_Exit });
+                new[] { Strings.Btn_RestoreBackup, Strings.Btn_StartEmpty },
+                image: MessageBoxImage.Error, cancelLabel: Strings.Btn_Exit);
             if (r is < 0 or 2) return false;
             _config = new ConfigFile();
             if (r == 0)
             {
                 if (!File.Exists(_store.BackupPath))
                 {
-                    MessageBox.Show(Strings.Msg_NoBackup, "ContextBridge");
+                    AppDialog.Show(Strings.Msg_NoBackup, "ContextBridge");
                 }
                 else
                 {
@@ -286,7 +287,7 @@ sealed partial class MainViewModel : ObservableObject
                     }
                     catch
                     {
-                        MessageBox.Show(Strings.Msg_BackupBroken, "ContextBridge");
+                        AppDialog.Show(Strings.Msg_BackupBroken, "ContextBridge");
                     }
                 }
             }
@@ -368,6 +369,19 @@ sealed partial class MainViewModel : ObservableObject
         }
     }
 
+    /// <summary>Reopen the folder windows that were open before Explorer restarts.</summary>
+    public bool ReopenFolderWindows
+    {
+        get => AppPreferences.Current.ReopenFolderWindows;
+        set
+        {
+            if (AppPreferences.Current.ReopenFolderWindows == value) return;
+            AppPreferences.Current.ReopenFolderWindows = value;
+            AppPreferences.Current.Save();
+            OnPropertyChanged();
+        }
+    }
+
     public string SaveToolTip => RestartExplorerOnSave ? Strings.Main_SaveTipRestart : Strings.Main_SaveTip;
 
     [ObservableProperty] [NotifyCanExecuteChangedFor(nameof(RestartExplorerCommand))]
@@ -378,8 +392,9 @@ sealed partial class MainViewModel : ObservableObject
     [RelayCommand(CanExecute = nameof(CanRestartExplorer))]
     async Task RestartExplorer()
     {
-        if (MessageBox.Show(Strings.Msg_RestartExplorerConfirm,
-                            "ContextBridge", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK)
+        if (AppDialog.Show(Strings.Msg_RestartExplorerConfirm,
+                            "ContextBridge", MessageBoxButton.OKCancel, MessageBoxImage.Question, MessageBoxResult.OK,
+                            new[] { Strings.Btn_Restart, Strings.Common_Cancel }) != MessageBoxResult.OK)
             return;
         await RestartExplorerCore(afterSave: false);
     }
@@ -392,15 +407,22 @@ sealed partial class MainViewModel : ObservableObject
         StatusText = saved + Strings.Status_RestartingExplorer;
         try
         {
+            // Folder windows are read before the shell goes away (COM needs the UI thread's STA).
+            var windows = ReopenFolderWindows ? ExplorerRestarter.CaptureFolderWindows() : new List<FolderWindow>();
             var error = await Task.Run(ExplorerRestarter.Restart);
             if (error is null)
             {
+                if (windows.Count > 0)
+                {
+                    StatusText = saved + string.Format(Strings.Status_ReopeningWindows, windows.Count);
+                    await ExplorerRestarter.ReopenAsync(windows);
+                }
                 StatusText = saved + Strings.Status_ExplorerRestarted;
             }
             else
             {
                 StatusText = saved + Strings.Status_ExplorerRestartFailed;
-                MessageBox.Show(string.Format(Strings.Msg_ExplorerRestartFailed, error), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AppDialog.Show(string.Format(Strings.Msg_ExplorerRestartFailed, error), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
         finally
@@ -412,9 +434,11 @@ sealed partial class MainViewModel : ObservableObject
     /// <summary>Synchronous variant for the "save on close" path (the window is going away).</summary>
     void RestartExplorerBlocking()
     {
+        var windows = ReopenFolderWindows ? ExplorerRestarter.CaptureFolderWindows() : new List<FolderWindow>();
         var error = ExplorerRestarter.Restart();
+        if (error is null) ExplorerRestarter.ReopenAsync(windows).Wait(TimeSpan.FromSeconds(30));
         if (error is not null)
-            MessageBox.Show(string.Format(Strings.Msg_ExplorerRestartFailed, error), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Warning);
+            AppDialog.Show(string.Format(Strings.Msg_ExplorerRestartFailed, error), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Warning);
     }
 
     public bool TrySave()
@@ -422,14 +446,14 @@ sealed partial class MainViewModel : ObservableObject
         var issues = ConfigValidator.Validate(_config, CachedProgramExists);
         if (ConfigValidator.HasErrors(issues))
         {
-            MessageBox.Show(string.Format(Strings.Msg_SaveBlocked,
+            AppDialog.Show(string.Format(Strings.Msg_SaveBlocked,
                                 string.Join("\n", issues.Where(i => i.Severity == Severity.Error).Select(i => Strings.Common_Bullet + i.Message))),
                             "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Warning);
             return false;
         }
         if (File.Exists(_store.ConfigPath) && File.GetLastWriteTimeUtc(_store.ConfigPath) != _loadedWriteTime)
         {
-            var r = MessageBox.Show(Strings.Msg_ExternalChange, "ContextBridge",
+            var r = AppDialog.Show(Strings.Msg_ExternalChange, "ContextBridge",
                                     MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (r != MessageBoxResult.Yes) return false;
         }
@@ -439,7 +463,7 @@ sealed partial class MainViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            MessageBox.Show(string.Format(Strings.Msg_SaveFailed, ex.Message), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Error);
+            AppDialog.Show(string.Format(Strings.Msg_SaveFailed, ex.Message), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Error);
             return false;
         }
         CleanupUnusedIcons();
@@ -475,8 +499,9 @@ sealed partial class MainViewModel : ObservableObject
     [RelayCommand]
     void Reload()
     {
-        if (IsDirty && MessageBox.Show(Strings.Msg_DiscardAndReload, "ContextBridge",
-                                       MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+        if (IsDirty && AppDialog.Show(Strings.Msg_DiscardAndReload, "ContextBridge",
+                                       MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No,
+                                       new[] { Strings.Btn_DiscardAndReload, Strings.Common_Cancel }) != MessageBoxResult.Yes)
             return;
         IconLoader.Invalidate();
         InvalidateProgramCache();
@@ -487,7 +512,8 @@ sealed partial class MainViewModel : ObservableObject
     public bool ConfirmClose()
     {
         if (!IsDirty || _closeConfirmed) return true;
-        var r = MessageBox.Show(Strings.Msg_SaveChanges, "ContextBridge", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+        var r = AppDialog.Show(Strings.Msg_SaveChanges, "ContextBridge", MessageBoxButton.YesNoCancel, MessageBoxImage.Question,
+                               MessageBoxResult.Yes, new[] { Strings.Btn_Save, Strings.Btn_DontSave, Strings.Common_Cancel });
         return r switch
         {
             MessageBoxResult.Yes => SaveForClose(),
@@ -605,8 +631,9 @@ sealed partial class MainViewModel : ObservableObject
     void Delete()
     {
         if (Selected is null) return;
-        if (MessageBox.Show(string.Format(Strings.Msg_DeleteCommand, Selected.DisplayTitle), "ContextBridge", MessageBoxButton.YesNo,
-                            MessageBoxImage.Question) != MessageBoxResult.Yes)
+        if (AppDialog.Show(string.Format(Strings.Msg_DeleteCommand, Selected.DisplayTitle), "ContextBridge", MessageBoxButton.YesNo,
+                            MessageBoxImage.Warning, MessageBoxResult.Yes,
+                            new[] { Strings.Main_Delete, Strings.Common_Cancel }) != MessageBoxResult.Yes)
             return;
         int idx = _config.Commands.IndexOf(Selected.Model);
         _config.Commands.RemoveAt(idx);
@@ -710,7 +737,7 @@ sealed partial class MainViewModel : ObservableObject
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format(Strings.Msg_ImageConvertFailed, ex.Message), "ContextBridge");
+                AppDialog.Show(string.Format(Strings.Msg_ImageConvertFailed, ex.Message), "ContextBridge");
                 return null;
             }
         }
@@ -756,7 +783,7 @@ sealed partial class MainViewModel : ObservableObject
         {
             int r = InputDialog.Ask(Application.Current.MainWindow, Strings.Dlg_DeleteGroupTitle,
                 string.Format(Strings.Msg_DeleteGroup, g.Title, members.Count), null,
-                new[] { Strings.Btn_MoveToTop, Strings.Btn_DeleteWithCommands });
+                new[] { Strings.Btn_MoveToTop, Strings.Btn_DeleteWithCommands }, image: MessageBoxImage.Warning);
             if (r < 0) return;
             deleteMembers = r == 1;
         }
@@ -838,7 +865,7 @@ sealed partial class MainViewModel : ObservableObject
         var c = Selected.Model;
         if (string.IsNullOrWhiteSpace(c.Action.Program))
         {
-            MessageBox.Show(Strings.Msg_NoProgram, "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Warning);
+            AppDialog.Show(Strings.Msg_NoProgram, "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 
@@ -886,13 +913,13 @@ sealed partial class MainViewModel : ObservableObject
 
         var why = LaunchPlanner.WhyHidden(c, sel);
         if (why is not null &&
-            MessageBox.Show(string.Format(Strings.Msg_WouldBeHidden, why), "ContextBridge",
+            AppDialog.Show(string.Format(Strings.Msg_WouldBeHidden, why), "ContextBridge",
                             MessageBoxButton.YesNo, MessageBoxImage.Information) != MessageBoxResult.Yes)
             return;
 
         var plans = LaunchPlanner.Plan(c, sel, Template.ProcessEnv);
         if (plans.Count > 5 &&
-            MessageBox.Show(string.Format(Strings.Msg_ManyLaunches, plans.Count), "ContextBridge",
+            AppDialog.Show(string.Format(Strings.Msg_ManyLaunches, plans.Count), "ContextBridge",
                             MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK)
             return;
 
@@ -932,7 +959,7 @@ sealed partial class MainViewModel : ObservableObject
 
         if (error is not null)
         {
-            MessageBox.Show(error, "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Error);
+            AppDialog.Show(error, "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
         StatusText = string.Format(Strings.Status_TryRunDone, title, plans.Count);
@@ -995,7 +1022,7 @@ sealed partial class MainViewModel : ObservableObject
     {
         if (_config.Commands.Count == 0)
         {
-            MessageBox.Show(Strings.Msg_NothingToExport, "ContextBridge");
+            AppDialog.Show(Strings.Msg_NothingToExport, "ContextBridge");
             return;
         }
         var win = new ExportWindow(_config, Selected?.Model.Id) { Owner = Application.Current.MainWindow };
@@ -1014,7 +1041,7 @@ sealed partial class MainViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            MessageBox.Show(string.Format(Strings.Msg_ExportFailed, ex.Message), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Error);
+            AppDialog.Show(string.Format(Strings.Msg_ExportFailed, ex.Message), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
         bool hasLocalIcons = doc.Commands.Any(c =>
@@ -1051,12 +1078,12 @@ sealed partial class MainViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            MessageBox.Show(string.Format(Strings.Msg_ImportFailed, ex.Message), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Warning);
+            AppDialog.Show(string.Format(Strings.Msg_ImportFailed, ex.Message), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
         if (plan.Items.Count == 0)
         {
-            MessageBox.Show(Strings.Msg_NoCommandsInFile, "ContextBridge");
+            AppDialog.Show(Strings.Msg_NoCommandsInFile, "ContextBridge");
             return;
         }
         // Always show what will be launched, never import without approval.
@@ -1081,7 +1108,7 @@ sealed partial class MainViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            MessageBox.Show(string.Format(Strings.Msg_OpenFolderFailed, ex.Message), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Error);
+            AppDialog.Show(string.Format(Strings.Msg_OpenFolderFailed, ex.Message), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -1110,13 +1137,13 @@ sealed partial class MainViewModel : ObservableObject
         {
             StatusText = Strings.Status_Registered;
             // A freshly (re)registered handler is picked up reliably only by a new Explorer process.
-            if (MessageBox.Show(Strings.Msg_RestartAfterRegister, "ContextBridge", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (AppDialog.Show(Strings.Msg_RestartAfterRegister, "ContextBridge", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 await RestartExplorerCore(afterSave: false);
         }
         else
         {
             StatusText = Strings.Status_RegisterFailed;
-            MessageBox.Show(string.Format(Strings.Msg_RegisterFailed, error), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Error);
+            AppDialog.Show(string.Format(Strings.Msg_RegisterFailed, error), "ContextBridge", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

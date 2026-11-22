@@ -13,6 +13,7 @@ sealed class AppPreferences
     /// <summary>"" = follow Windows, otherwise a language tag such as "ja" or "en".</summary>
     public string Language { get; set; } = "";
     public bool RestartExplorerOnSave { get; set; }
+    public bool ReopenFolderWindows { get; set; } = true;
 
     public WindowPlacement? Window { get; set; }
     public double CommandListWidth { get; set; }

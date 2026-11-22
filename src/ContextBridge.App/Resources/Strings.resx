@@ -126,11 +126,11 @@
   <data name="Grp_ClearIcon" xml:space="preserve"><value>Remove icon</value></data>
   <data name="Grp_Delete" xml:space="preserve"><value>Delete group…</value></data>
   <data name="Grp_DeleteTip" xml:space="preserve"><value>Delete the selected group (Delete)</value></data>
-  <data name="Grp_Hint" xml:space="preserve"><value>The menu has at most two levels: “ContextBridge &gt; group &gt; command”. Choose a command's group on the Commands tab.</value></data>
+  <data name="Grp_Hint" xml:space="preserve"><value>In Explorer, each group appears as a titled section of the ContextBridge menu (Windows 11 does not open nested submenus). Choose a command's group on the Commands tab.</value></data>
   <data name="Grp_ColTitle" xml:space="preserve"><value>Title</value></data>
   <data name="Grp_ColIcon" xml:space="preserve"><value>Icon</value></data>
   <data name="Grp_ColCount" xml:space="preserve"><value>Commands</value></data>
-  <data name="Grp_Empty" xml:space="preserve"><value>No groups yet. Groups bundle commands into a submenu.</value></data>
+  <data name="Grp_Empty" xml:space="preserve"><value>No groups yet. Groups split the ContextBridge menu into titled sections.</value></data>
   <data name="Grp_IconNone" xml:space="preserve"><value>(none)</value></data>
   <data name="Grp_IconUnset" xml:space="preserve"><value>(not set)</value></data>
   <data name="Grp_NoneChoice" xml:space="preserve"><value>(None: show at the top level)</value></data>
@@ -163,7 +163,9 @@ It contains {1} commands. Until you save, Reload undoes this.</value></data>
   <data name="Set_ConfigFile" xml:space="preserve"><value>Settings file</value></data>
   <data name="Set_About" xml:space="preserve"><value>About</value></data>
   <data name="Set_NoNetwork" xml:space="preserve"><value>ContextBridge never connects to the network (not even to check for updates).</value></data>
-  <data name="Msg_LanguageRestart" xml:space="preserve"><value>The display language changes when ContextBridge restarts. Restart now?</value></data>
+  <data name="Msg_LanguageRestart" xml:space="preserve"><value>Restart ContextBridge now?
+
+The display language changes when ContextBridge restarts.</value></data>
   <data name="Msg_LoadFailed" xml:space="preserve"><value>The settings file could not be loaded.
 
 {0}
@@ -187,9 +189,15 @@ It contains {1} commands. Until you save, Reload undoes this.</value></data>
 {0}</value></data>
   <data name="Status_Saved" xml:space="preserve"><value>Saved ({0:HH:mm:ss}). Changes apply the next time you right-click in Explorer.</value></data>
   <data name="Status_SavedShort" xml:space="preserve"><value>Saved ({0:HH:mm:ss}). </value></data>
-  <data name="Msg_DiscardAndReload" xml:space="preserve"><value>Discard unsaved changes and reload?</value></data>
-  <data name="Msg_SaveChanges" xml:space="preserve"><value>Save your changes?</value></data>
-  <data name="Msg_RestartExplorerConfirm" xml:space="preserve"><value>Restart Explorer? Open Explorer windows will be closed and the taskbar disappears briefly.</value></data>
+  <data name="Msg_DiscardAndReload" xml:space="preserve"><value>Discard unsaved changes?
+
+The settings file is read again and your unsaved edits are lost.</value></data>
+  <data name="Msg_SaveChanges" xml:space="preserve"><value>Save your changes?
+
+If you don't save, your edits since the last save are lost.</value></data>
+  <data name="Msg_RestartExplorerConfirm" xml:space="preserve"><value>Restart Explorer?
+
+The taskbar disappears briefly. Open folder windows are closed and reopened afterwards (this can be turned off on the Settings tab).</value></data>
   <data name="Status_RestartingExplorer" xml:space="preserve"><value>Restarting Explorer…</value></data>
   <data name="Status_ExplorerRestarted" xml:space="preserve"><value>Explorer restarted.</value></data>
   <data name="Status_ExplorerRestartFailed" xml:space="preserve"><value>Could not restart Explorer.</value></data>
@@ -204,7 +212,9 @@ It contains {1} commands. Until you save, Reload undoes this.</value></data>
   <data name="Filter_AllFiles" xml:space="preserve"><value>All files</value></data>
   <data name="Filter_Icons" xml:space="preserve"><value>Icons and images</value></data>
   <data name="Filter_Share" xml:space="preserve"><value>ContextBridge share files</value></data>
-  <data name="Msg_DeleteCommand" xml:space="preserve"><value>Delete “{0}”?</value></data>
+  <data name="Msg_DeleteCommand" xml:space="preserve"><value>Delete “{0}”?
+
+Until you save, Reload brings it back.</value></data>
   <data name="Msg_ImageConvertFailed" xml:space="preserve"><value>Could not convert the image.
 
 {0}</value></data>
@@ -224,7 +234,9 @@ It contains {1} commands. Until you save, Reload undoes this.</value></data>
 Reason: {0}
 
 Run it anyway?</value></data>
-  <data name="Msg_ManyLaunches" xml:space="preserve"><value>This starts the program {0} times. Continue?</value></data>
+  <data name="Msg_ManyLaunches" xml:space="preserve"><value>Start the program {0} times?
+
+One launch per selected item.</value></data>
   <data name="Msg_LaunchFailed" xml:space="preserve"><value>Could not start the program.
 
 &gt; {0}
@@ -259,7 +271,9 @@ Run it anyway?</value></data>
   <data name="Pkg_DevBuild" xml:space="preserve"><value>This development build does not include the package (install ContextBridge with the installer)</value></data>
   <data name="Status_Registering" xml:space="preserve"><value>Registering… (an administrator prompt appears)</value></data>
   <data name="Status_Registered" xml:space="preserve"><value>Registered.</value></data>
-  <data name="Msg_RestartAfterRegister" xml:space="preserve"><value>Registered. Restart Explorer now so that the menu appears?</value></data>
+  <data name="Msg_RestartAfterRegister" xml:space="preserve"><value>Registered. Restart Explorer now?
+
+A newly registered menu reliably appears only in a freshly started Explorer.</value></data>
   <data name="Status_RegisterFailed" xml:space="preserve"><value>Registration failed</value></data>
   <data name="Msg_RegisterFailed" xml:space="preserve"><value>Could not register the package.
 
@@ -313,7 +327,9 @@ Run it anyway?</value></data>
   <data name="Import_WorkingDir" xml:space="preserve"><value>Working folder</value></data>
   <data name="Import_Icon" xml:space="preserve"><value>Icon</value></data>
   <data name="Import_Targets" xml:space="preserve"><value>Targets</value></data>
-  <data name="Msg_ImportMissingPrograms" xml:space="preserve"><value>Some selected items use programs that cannot be found. Import anyway?</value></data>
+  <data name="Msg_ImportMissingPrograms" xml:space="preserve"><value>Import anyway?
+
+Some selected items use programs that cannot be found on this PC.</value></data>
   <data name="Export_WindowTitle" xml:space="preserve"><value>Export commands</value></data>
   <data name="Export_Intro" xml:space="preserve"><value>Choose the commands to export. Their groups are exported too.</value></data>
   <data name="Export_Description" xml:space="preserve"><value>Description (optional)</value></data>
@@ -321,4 +337,12 @@ Run it anyway?</value></data>
   <data name="Export_Ok" xml:space="preserve"><value>Export…</value></data>
   <data name="Export_GroupSep" xml:space="preserve"><value> &gt; </value></data>
   <data name="Msg_ExportChooseOne" xml:space="preserve"><value>Choose at least one command.</value></data>
+  <data name="Common_Yes" xml:space="preserve"><value>Yes</value></data>
+  <data name="Common_No" xml:space="preserve"><value>No</value></data>
+  <data name="Btn_Restart" xml:space="preserve"><value>Restart</value></data>
+  <data name="Btn_DiscardAndReload" xml:space="preserve"><value>Discard and reload</value></data>
+  <data name="Btn_Save" xml:space="preserve"><value>Save</value></data>
+  <data name="Btn_DontSave" xml:space="preserve"><value>Don't save</value></data>
+  <data name="Set_ReopenWindows" xml:space="preserve"><value>Reopen folder windows after restarting Explorer</value></data>
+  <data name="Status_ReopeningWindows" xml:space="preserve"><value>Reopening {0} folder windows…</value></data>
 </root>

@@ -6,9 +6,11 @@ Add **your own programs** to the new Windows 11 context menu — the compact men
 Right-click
 ├─ Open
 ├─ ...
-└─ ContextBridge ▸ ├─ Editors ▸ ├─ Open in VS Code
-                   │            └─ Open in Notepad
-                   └─ Open Git Bash here
+└─ ContextBridge ▸ ├─ Open Git Bash here
+                   ├─ ───────────────
+                   ├─ Editors            (group heading)
+                   ├─ Open in VS Code
+                   └─ Open in Notepad
 ```
 
 - Show a command only for specific targets (files, folders, folder background, drives), file extensions and selection counts
@@ -49,8 +51,10 @@ More things you can do:
 
 - **Try it…** launches the command against files or folders you pick, exactly as Explorer would. If the command would not appear for that selection, it tells you why
 - Drop a program (.exe or a .lnk shortcut) or a share file (.json) onto the window to add or import it
+- Groups split the ContextBridge menu into titled sections (Windows 11 does not open submenus nested inside another submenu, so a group is shown as a heading followed by its commands)
 - Delete a group on the Groups tab (or press Delete), or with the delete button next to the group box in the command editor. You choose whether its commands move to the top level or are deleted too
 - The ▾ next to **Save** offers **Save and restart Explorer** (Ctrl+Shift+S). With **Always restart Explorer when saving** turned on, every save restarts Explorer. This is rarely needed: changes normally apply on the next right-click
+- When Explorer restarts, the folder windows that were open are reopened at their previous position (turn this off on the Settings tab). Separate tabs come back as separate windows
 - In the command list: Ctrl+F filters (Esc clears), drag or Alt+↑/↓ reorders, Delete removes, Ctrl+D duplicates. The same actions are on the right-click menu. Commands with problems are marked with ⚠; click an entry in the **Issues** panel to jump to the command
 - Window position and size, the list width and the last open tab are restored on the next start
 - If the title is left blank, the menu shows "Open in &lt;program&gt;" ("&lt;program&gt; で開く" on Japanese Windows)
@@ -107,7 +111,7 @@ Uninstall ContextBridge from Settings → Apps → Installed apps. The package r
 ## Known limitations
 
 - Windows 11 shows the items inside one "ContextBridge" submenu (the name can be changed); they cannot be placed individually at the top level
-- The menu has at most two levels: ContextBridge › group › command
+- Windows 11 only opens one level of submenu, so groups are shown as titled sections inside the ContextBridge submenu rather than as nested submenus
 - Items don't appear in special locations such as the desktop background, libraries or the Recycle Bin (only items with a file-system path are supported)
 - Titles cannot change dynamically the way some classic menu handlers do
 

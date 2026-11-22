@@ -126,11 +126,11 @@
   <data name="Grp_ClearIcon" xml:space="preserve"><value>アイコンを解除</value></data>
   <data name="Grp_Delete" xml:space="preserve"><value>グループを削除…</value></data>
   <data name="Grp_DeleteTip" xml:space="preserve"><value>選択中のグループを削除 (Delete)</value></data>
-  <data name="Grp_Hint" xml:space="preserve"><value>メニューは「ContextBridge ＞ グループ ＞ コマンド」の 2 階層までです。コマンドの所属はコマンド タブで選びます。</value></data>
+  <data name="Grp_Hint" xml:space="preserve"><value>エクスプローラーでは、グループは ContextBridge メニュー内の見出し付きの区切りとして表示されます（Windows 11 は入れ子のサブメニューを開けないため）。コマンドの所属はコマンド タブで選びます。</value></data>
   <data name="Grp_ColTitle" xml:space="preserve"><value>表示名</value></data>
   <data name="Grp_ColIcon" xml:space="preserve"><value>アイコン</value></data>
   <data name="Grp_ColCount" xml:space="preserve"><value>コマンド数</value></data>
-  <data name="Grp_Empty" xml:space="preserve"><value>グループはありません。グループを使うとコマンドをサブメニューにまとめられます。</value></data>
+  <data name="Grp_Empty" xml:space="preserve"><value>グループはありません。グループを使うと ContextBridge メニューを見出し付きの区切りに分けられます。</value></data>
   <data name="Grp_IconNone" xml:space="preserve"><value>（なし）</value></data>
   <data name="Grp_IconUnset" xml:space="preserve"><value>（未指定）</value></data>
   <data name="Grp_NoneChoice" xml:space="preserve"><value>（なし：トップに表示）</value></data>
@@ -163,7 +163,9 @@
   <data name="Set_ConfigFile" xml:space="preserve"><value>設定ファイル</value></data>
   <data name="Set_About" xml:space="preserve"><value>バージョン情報</value></data>
   <data name="Set_NoNetwork" xml:space="preserve"><value>ContextBridge はネットワーク通信を行いません（更新確認も含む）。</value></data>
-  <data name="Msg_LanguageRestart" xml:space="preserve"><value>表示言語は ContextBridge の再起動後に切り替わります。今すぐ再起動しますか？</value></data>
+  <data name="Msg_LanguageRestart" xml:space="preserve"><value>ContextBridge を今すぐ再起動しますか？
+
+表示言語は再起動後に切り替わります。</value></data>
   <data name="Msg_LoadFailed" xml:space="preserve"><value>設定ファイルを読み込めませんでした。
 
 {0}
@@ -187,9 +189,15 @@
 {0}</value></data>
   <data name="Status_Saved" xml:space="preserve"><value>保存しました ({0:HH:mm:ss})。エクスプローラーで次に右クリックしたときから反映されます。</value></data>
   <data name="Status_SavedShort" xml:space="preserve"><value>保存しました ({0:HH:mm:ss})。</value></data>
-  <data name="Msg_DiscardAndReload" xml:space="preserve"><value>保存していない変更を破棄して再読み込みしますか？</value></data>
-  <data name="Msg_SaveChanges" xml:space="preserve"><value>変更を保存しますか？</value></data>
-  <data name="Msg_RestartExplorerConfirm" xml:space="preserve"><value>エクスプローラーを再起動します。開いているエクスプローラーのウィンドウは閉じられ、タスク バーも一時的に消えます。続けますか？</value></data>
+  <data name="Msg_DiscardAndReload" xml:space="preserve"><value>保存していない変更を破棄しますか？
+
+設定ファイルを読み直すため、保存していない編集は失われます。</value></data>
+  <data name="Msg_SaveChanges" xml:space="preserve"><value>変更を保存しますか？
+
+保存しない場合、最後に保存してからの編集は失われます。</value></data>
+  <data name="Msg_RestartExplorerConfirm" xml:space="preserve"><value>エクスプローラーを再起動しますか？
+
+タスク バーが一時的に消えます。開いているフォルダ ウィンドウはいったん閉じられ、再起動後に開き直します（「設定」タブでオフにできます）。</value></data>
   <data name="Status_RestartingExplorer" xml:space="preserve"><value>エクスプローラーを再起動しています…</value></data>
   <data name="Status_ExplorerRestarted" xml:space="preserve"><value>エクスプローラーを再起動しました。</value></data>
   <data name="Status_ExplorerRestartFailed" xml:space="preserve"><value>エクスプローラーを再起動できませんでした。</value></data>
@@ -204,7 +212,9 @@
   <data name="Filter_AllFiles" xml:space="preserve"><value>すべてのファイル</value></data>
   <data name="Filter_Icons" xml:space="preserve"><value>アイコン・画像</value></data>
   <data name="Filter_Share" xml:space="preserve"><value>ContextBridge 共有ファイル</value></data>
-  <data name="Msg_DeleteCommand" xml:space="preserve"><value>「{0}」を削除しますか？</value></data>
+  <data name="Msg_DeleteCommand" xml:space="preserve"><value>「{0}」を削除しますか？
+
+保存するまでは「再読み込み」で元に戻せます。</value></data>
   <data name="Msg_ImageConvertFailed" xml:space="preserve"><value>画像を変換できませんでした。
 
 {0}</value></data>
@@ -224,7 +234,9 @@
 理由: {0}
 
 それでも実行しますか？</value></data>
-  <data name="Msg_ManyLaunches" xml:space="preserve"><value>{0} 回起動します。よろしいですか？</value></data>
+  <data name="Msg_ManyLaunches" xml:space="preserve"><value>プログラムを {0} 回起動しますか？
+
+選択した項目ごとに 1 回起動します。</value></data>
   <data name="Msg_LaunchFailed" xml:space="preserve"><value>起動できませんでした。
 
 &gt; {0}
@@ -259,7 +271,9 @@
   <data name="Pkg_DevBuild" xml:space="preserve"><value>開発用ビルドのためパッケージが同梱されていません（インストーラーから導入してください）</value></data>
   <data name="Status_Registering" xml:space="preserve"><value>登録しています…（管理者権限の確認が表示されます）</value></data>
   <data name="Status_Registered" xml:space="preserve"><value>登録しました。</value></data>
-  <data name="Msg_RestartAfterRegister" xml:space="preserve"><value>登録しました。メニューを確実に表示するため、エクスプローラーを今すぐ再起動しますか？</value></data>
+  <data name="Msg_RestartAfterRegister" xml:space="preserve"><value>登録しました。エクスプローラーを今すぐ再起動しますか？
+
+登録したメニューは、再起動したエクスプローラーで確実に表示されます。</value></data>
   <data name="Status_RegisterFailed" xml:space="preserve"><value>登録に失敗しました</value></data>
   <data name="Msg_RegisterFailed" xml:space="preserve"><value>パッケージを登録できませんでした。
 
@@ -313,7 +327,9 @@
   <data name="Import_WorkingDir" xml:space="preserve"><value>作業フォルダ</value></data>
   <data name="Import_Icon" xml:space="preserve"><value>アイコン</value></data>
   <data name="Import_Targets" xml:space="preserve"><value>対象</value></data>
-  <data name="Msg_ImportMissingPrograms" xml:space="preserve"><value>見つからないプログラムを含む項目があります。このまま取り込みますか？</value></data>
+  <data name="Msg_ImportMissingPrograms" xml:space="preserve"><value>このまま取り込みますか？
+
+選択した項目に、この PC で見つからないプログラムを使うものがあります。</value></data>
   <data name="Export_WindowTitle" xml:space="preserve"><value>コマンドの書き出し</value></data>
   <data name="Export_Intro" xml:space="preserve"><value>書き出すコマンドを選んでください。所属するグループも一緒に書き出されます。</value></data>
   <data name="Export_Description" xml:space="preserve"><value>説明（任意）</value></data>
@@ -321,4 +337,12 @@
   <data name="Export_Ok" xml:space="preserve"><value>書き出す…</value></data>
   <data name="Export_GroupSep" xml:space="preserve"><value> ＞ </value></data>
   <data name="Msg_ExportChooseOne" xml:space="preserve"><value>コマンドを 1 つ以上選んでください。</value></data>
+  <data name="Common_Yes" xml:space="preserve"><value>はい</value></data>
+  <data name="Common_No" xml:space="preserve"><value>いいえ</value></data>
+  <data name="Btn_Restart" xml:space="preserve"><value>再起動</value></data>
+  <data name="Btn_DiscardAndReload" xml:space="preserve"><value>破棄して再読み込み</value></data>
+  <data name="Btn_Save" xml:space="preserve"><value>保存</value></data>
+  <data name="Btn_DontSave" xml:space="preserve"><value>保存しない</value></data>
+  <data name="Set_ReopenWindows" xml:space="preserve"><value>エクスプローラーの再起動後に開いていたフォルダを開き直す</value></data>
+  <data name="Status_ReopeningWindows" xml:space="preserve"><value>フォルダ ウィンドウを {0} 個開き直しています…</value></data>
 </root>

@@ -53,6 +53,8 @@
                                           Command="{Binding SaveAndRestartExplorerCommand}" />
                                 <MenuItem Header="{x:Static r:Strings.Main_RestartOnSave}" IsCheckable="True"
                                           IsChecked="{Binding RestartExplorerOnSave}" />
+                                <MenuItem Header="{x:Static r:Strings.Set_ReopenWindows}" IsCheckable="True"
+                                          IsChecked="{Binding ReopenFolderWindows}" />
                                 <Separator />
                                 <MenuItem Header="{x:Static r:Strings.Main_RestartExplorerNow}" Command="{Binding RestartExplorerCommand}" />
                             </ContextMenu>
@@ -684,6 +686,7 @@
                             <StackPanel>
                                 <TextBlock Style="{StaticResource CardHeader}" Text="{x:Static r:Strings.Set_Explorer}" />
                                 <CheckBox Content="{x:Static r:Strings.Set_RestartOnSave}" IsChecked="{Binding RestartExplorerOnSave}" />
+                                <CheckBox Content="{x:Static r:Strings.Set_ReopenWindows}" IsChecked="{Binding ReopenFolderWindows}" Margin="0,6,0,0" />
                                 <Button Command="{Binding RestartExplorerCommand}" HorizontalAlignment="Left" Margin="0,8,0,0" Padding="12,4">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Style="{StaticResource Glyph}" Text="&#xE72C;" />

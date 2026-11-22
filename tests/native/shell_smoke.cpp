@@ -174,36 +174,37 @@ int wmain(int argc, wchar_t** argv) {
         EXPECT(State(root, mixed) == ECS_HIDDEN);  // .png in the selection disqualifies "Text only"
         EXPECT(State(root, folder) == ECS_ENABLED);
 
+        // Groups are flattened into sections (Windows 11 does not expand nested flyouts), and the
+        // flyout is laid out for the selection read by the preceding root GetState.
+        EXPECT(State(root, txt) == ECS_ENABLED);
         auto top = Children(root);
-        EXPECT(top.size() == 2);  // group "g" + "Folder only" (disabled omitted)
+        EXPECT(top.size() == 2);  // header "Group" + "Text only" ("Folder only" / disabled omitted)
         if (top.size() == 2) {
             EXPECT(Title(top[0], txt) == L"Group");
-            EXPECT(Title(top[1], txt) == L"Folder only");
-            EXPECT(State(top[0], txt) == ECS_ENABLED);
-            EXPECT(State(top[1], txt) == ECS_HIDDEN);
-            EXPECT(State(top[0], folder) == ECS_HIDDEN);
-            EXPECT(State(top[1], folder) == ECS_ENABLED);
-            auto inGroup = Children(top[0]);
-            EXPECT(inGroup.size() == 1);
-            if (inGroup.size() == 1) {
-                EXPECT(Title(inGroup[0], txt) == L"Text only");
-                PWSTR icon = nullptr;
-                EXPECT(SUCCEEDED(inGroup[0]->GetIcon(txt, &icon)));
-                CoTaskMemFree(icon);
-                EXPECT(SUCCEEDED(inGroup[0]->Invoke(txt, nullptr)));
-                for (int i = 0; i < 100 && !fs::exists(marker); ++i) Sleep(100);
-                EXPECT(fs::exists(marker));
-                if (fs::exists(marker)) {
-                    std::ifstream in(marker);
-                    std::string content((std::istreambuf_iterator<char>(in)), {});
-                    std::printf("launch output: %s\n", content.c_str());
-                    EXPECT(content.find("a.txt") != std::string::npos);
-                    EXPECT(content.find("b.md") != std::string::npos);
-                }
+            EXPECT(State(top[0], txt) == ECS_DISABLED);  // header is a label
+            EXPECT(Title(top[1], txt) == L"Text only");
+            EXPECT(State(top[1], txt) == ECS_ENABLED);
+            PWSTR icon = nullptr;
+            EXPECT(SUCCEEDED(top[1]->GetIcon(txt, &icon)));
+            CoTaskMemFree(icon);
+            EXPECT(SUCCEEDED(top[1]->Invoke(txt, nullptr)));
+            for (int i = 0; i < 100 && !fs::exists(marker); ++i) Sleep(100);
+            EXPECT(fs::exists(marker));
+            if (fs::exists(marker)) {
+                std::ifstream in(marker);
+                std::string content((std::istreambuf_iterator<char>(in)), {});
+                std::printf("launch output: %s\n", content.c_str());
+                EXPECT(content.find("a.txt") != std::string::npos);
+                EXPECT(content.find("b.md") != std::string::npos);
             }
-            for (auto c : inGroup) c->Release();
         }
         for (auto c : top) c->Release();
+
+        EXPECT(State(root, folder) == ECS_ENABLED);
+        auto forFolder = Children(root);
+        EXPECT(forFolder.size() == 1);
+        if (forFolder.size() == 1) EXPECT(Title(forFolder[0], folder) == L"Folder only");
+        for (auto c : forFolder) c->Release();
 
         // Broken config → everything hidden, nothing thrown.
         Sleep(300);  // config stat calls are coalesced for 250 ms

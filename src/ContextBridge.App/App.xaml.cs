@@ -43,7 +43,7 @@ public partial class App : Application
 
     void OnUnhandled(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
-        MessageBox.Show(string.Format(Strings.Msg_Unexpected, e.Exception.Message), "ContextBridge",
+        AppDialog.Show(string.Format(Strings.Msg_Unexpected, e.Exception.Message), "ContextBridge",
                         MessageBoxButton.OK, MessageBoxImage.Error);
         e.Handled = true;
     }

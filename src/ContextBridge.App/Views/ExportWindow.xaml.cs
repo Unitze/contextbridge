@@ -50,7 +50,7 @@ partial class ExportWindow : Window
     {
         if (SelectedIds.Count == 0)
         {
-            MessageBox.Show(Strings.Msg_ExportChooseOne, "ContextBridge");
+            AppDialog.Show(Strings.Msg_ExportChooseOne, "ContextBridge");
             return;
         }
         DialogResult = true;

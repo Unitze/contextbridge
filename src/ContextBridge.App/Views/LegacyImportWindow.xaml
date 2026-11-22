@@ -4,12 +4,23 @@
         xmlns:r="clr-namespace:ContextBridge.App.Resources"
         Title="{x:Static r:Strings.Legacy_WindowTitle}" Width="1060" Height="680" MinWidth="720" MinHeight="420"
         WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
-    <DockPanel Margin="16">
+    <DockPanel>
+        <Border DockPanel.Dock="Bottom" Style="{StaticResource DialogFooter}">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                    <Button x:Name="OkButton" Content="{x:Static r:Strings.Legacy_Ok}" IsDefault="True" IsEnabled="False" Click="Ok_Click" Style="{StaticResource DialogAccentButton}" />
+                    <Button Content="{x:Static r:Strings.Common_Cancel}" IsCancel="True" Style="{StaticResource DialogButton}" />
+                </StackPanel>
+                <TextBlock x:Name="Summary" VerticalAlignment="Center" Opacity="0.8" TextTrimming="CharacterEllipsis" />
+            </DockPanel>
+        </Border>
+    <DockPanel Margin="24,20,24,12">
         <StackPanel DockPanel.Dock="Top">
-            <TextBlock TextWrapping="Wrap" Text="{x:Static r:Strings.Legacy_Intro}" />
+            <TextBlock Style="{StaticResource DialogTitle}" Text="{x:Static r:Strings.Legacy_WindowTitle}" />
+            <TextBlock TextWrapping="Wrap" Opacity="0.85" Text="{x:Static r:Strings.Legacy_Intro}" />
             <TextBlock Style="{StaticResource Hint}" Margin="0,4,0,8"
                        Text="{x:Static r:Strings.Legacy_IntroHint}" />
-            <DockPanel Margin="0,0,0,8">
+            <DockPanel Margin="0,4,0,10">
                 <CheckBox x:Name="ShowUnsupported" Content="{x:Static r:Strings.Legacy_ShowUnsupported}" DockPanel.Dock="Right" Checked="Filter_Changed" Unchecked="Filter_Changed" />
                 <CheckBox x:Name="ShowImported" Content="{x:Static r:Strings.Legacy_ShowImported}" DockPanel.Dock="Right" Margin="0,0,16,0" Checked="Filter_Changed" Unchecked="Filter_Changed" />
                 <Button Content="{x:Static r:Strings.Common_SelectAll}" Click="SelectAll_Click" Margin="0,0,6,0" ToolTip="{x:Static r:Strings.Legacy_SelectAllTip}" />
@@ -19,12 +30,6 @@
                     <TextBlock Style="{StaticResource Glyph}" Text="&#xE721;" Opacity="0.55" IsHitTestVisible="False" Margin="9,0,0,0" HorizontalAlignment="Left" />
                 </Grid>
             </DockPanel>
-        </StackPanel>
-
-        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
-            <TextBlock x:Name="Summary" VerticalAlignment="Center" Margin="0,0,16,0" Opacity="0.8" />
-            <Button x:Name="OkButton" Content="{x:Static r:Strings.Legacy_Ok}" IsDefault="True" IsEnabled="False" Click="Ok_Click" Padding="14,4" Style="{DynamicResource AccentButtonStyle}" Margin="0,0,8,0" />
-            <Button Content="{x:Static r:Strings.Common_Cancel}" IsCancel="True" Padding="14,4" />
         </StackPanel>
 
         <Expander x:Name="RemovedPanel" DockPanel.Dock="Bottom" Header="{x:Static r:Strings.Legacy_RemovedHeader}" Margin="0,8,0,0">
@@ -73,5 +78,6 @@
             </DataGrid>
             <TextBlock x:Name="Loading" Text="{x:Static r:Strings.Legacy_Scanning}" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Grid>
+    </DockPanel>
     </DockPanel>
 </Window>
